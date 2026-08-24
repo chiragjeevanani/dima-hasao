@@ -13,7 +13,7 @@ export const HomeScreen = () => {
 
   return (
     <div className="text-gray-800 pb-20 relative bg-[#FDFBF7] min-h-screen">
-      {/* BEGIN: Tall Grand Header Section (Matching Image 2 Reference) */}
+      {/* BEGIN: Tall Grand Header Section (Matching Image Reference) */}
       <header
         className="relative w-full h-[340px] sm:h-[360px] overflow-hidden rounded-b-3xl shadow-sm"
         data-purpose="main-header"
@@ -105,7 +105,7 @@ export const HomeScreen = () => {
 
       {/* BEGIN: Main Content Area */}
       <main className="space-y-4 pt-3" data-purpose="main-content">
-        {/* Primary 3 Categories Grid (Side-by-Side 3 Columns) */}
+        {/* Primary 3 Categories Grid with Seamless Color Blending */}
         <div className="grid grid-cols-3 gap-2 px-3" data-purpose="primary-categories">
           <CategoryCard
             title="TOURIST PLACES"
@@ -113,8 +113,9 @@ export const HomeScreen = () => {
             icon="fa-solid fa-location-dot"
             image="https://lh3.googleusercontent.com/aida-public/AB6AXuDNCBOtk-v5CpAuzZ1kd7mndMkJZKKwMy00a2zicQ0HpEEfpw427eAibYCSi2nD2wHFUkrbD1pzwIzejGOFn5WqC6zu_oE1z2PO5Z2B1LMuzEvrGDcapXZ2xU8jST_VXGR9TxKd25HsrNfffLqEY_Xm1289lDT9d4F7I68sPPhKOmC33cLzcrcIo7RfCXTsf-KCLrE92u-ebldONSuUSfat64_5N4AFn8Z0bfjeYXSmC8Y2I5u8t3g1"
             buttonText="Explore Now"
-            buttonBg="bg-[#0a3a22]"
-            gradientClass="from-[#18a465] to-[#0c5936]"
+            buttonBg="bg-[#044e29]"
+            gradientClass="bg-gradient-to-b from-[#10b981] via-[#059669] to-[#044e29]"
+            topOverlayColor="from-[#059669]"
             onClick={() => navigate('/places')}
           />
 
@@ -124,8 +125,9 @@ export const HomeScreen = () => {
             icon="fa-solid fa-car"
             image="https://lh3.googleusercontent.com/aida-public/AB6AXuDCJDblprWgYBvh1_FLMSBqIvOXSdwgS_fPcH_MyWvag50_LwhLZums5qzaDWSIT0HbG0SJMToG7JpPvejlX3Qy5bLkCG38QZIqu5mBcSGP2wl3HGzM_X0PCK0xdHmNkET-dGu7TRc-monu00rabiXzQRo3EhbHNOkDMNkXrPK1awEDEd4ZGfwJUS4cVNDcKYVkqKl3pjgKMkPrLtYQA-IL07hjQc-c-KZlD6NT-lo8WH27nCiKI8JN"
             buttonText="Book Now"
-            buttonBg="bg-[#d95a07]"
-            gradientClass="from-[#f99d26] to-[#e16912]"
+            buttonBg="bg-[#ea580c]"
+            gradientClass="bg-gradient-to-b from-[#f59e0b] via-[#ea580c] to-[#c2410c]"
+            topOverlayColor="from-[#ea580c]"
             onClick={() => navigate('/book-ride')}
           />
 
@@ -135,8 +137,9 @@ export const HomeScreen = () => {
             icon="fa-solid fa-bed"
             image="https://lh3.googleusercontent.com/aida-public/AB6AXuDu5Pbf3ToUuNDG3Ykr_oqb6a2-hh7vSE60pCjbagFjqrigh7ETKBYtUYP7bOC8sCPqF0oHQXdi1TbZ6LCZblOychxaZYt5SDhg9YBw8bMVPI1wmeURSYs_MNOhhGyoCRPAC9-VGTQdSfd8KZYlU0HzlecyFoFwn74vcZ8e1vWAXxYQSCHsoElObyZAiJJcMFxfV2a_b6cT4dn9fzfOO2k4ySEorPC6hLD-PnNLxB8w9sDFxhc1j9FU"
             buttonText="View Hotels"
-            buttonBg="bg-[#431487]"
-            gradientClass="from-[#7e42d8] to-[#501c9a]"
+            buttonBg="bg-[#6d28d9]"
+            gradientClass="bg-gradient-to-b from-[#8b5cf6] via-[#6d28d9] to-[#4c1d95]"
+            topOverlayColor="from-[#6d28d9]"
             onClick={() => navigate('/places/1')}
           />
         </div>
