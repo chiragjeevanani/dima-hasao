@@ -1,0 +1,1529 @@
+<!-- Login Screen -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dima Hasao Login</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style data-purpose="custom-fonts">
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-green': '#0a2e12',
+                        'brand-dark-green': '#061c0a',
+                        'brand-gold': '#d4af37',
+                        'brand-gold-light': '#e8c558',
+                        'brand-gold-dark': '#b38f2a',
+                    },
+                    backgroundImage: {
+                        'login-bg': "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBH3yoGDEjkc2_3DfvzwEABGOcJfsYPvZaf-tza549DO3qeJ1em167F-zbvjk2VqhYK9xhVPQC5DHQg2Z-0CN4mgf041nUI55a-vnVhhlkicuaCMIVFO4AXwxyV90FJqG6LYRpyV06SVGdw5kp4Y7wXf25u7sma0aIvA3GnZ5-Shv0HVkI4ljwmM85zaK0yVVdwTvrIIRXePCTJyqBdWnf1MxVcFHjJGTflZM7vNhUfyQ4F1tEwntz6sy0CV_ihM5LLGw')",
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <!-- BEGIN: MainContainer -->
+    <main
+        class="relative w-full max-w-[400px] h-[850px] mx-auto overflow-hidden bg-cover bg-center bg-no-repeat shadow-2xl"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXaCppCAWOTw7SSjshaeIT4q9Vk0sB5Tr17OoPDuE5bf0M4Z6M3i_0R44YXYi1zVklA0SUNaOaO42Eh0hqM_PEI_T_amXdisJpNfS1A-TivdXkWbTBux83Fk9AVABTFh1VBJGpWMtMQTuQBA_6meYQYFBLjTLtw2gaMNfUVrEQLsFJY42tJ1O-N7vVOLbCcHjo5YJftD2kg_GRjfROfbeTe19eGQsss-baNDmi_I1W-lpjDNFIKeseDlQr2vZ9wVP0EQ');">
+        <!-- Top section overlay to ensure text readability if needed, though original image handles it -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent pointer-events-none">
+        </div>
+        <!-- BEGIN: Header Section (Logo and Title) -->
+        <!-- This section relies on the background image for the logo and upper text to match pixel perfectly as requested, 
+         but we overlay a visually hidden text for accessibility -->
+        <div class="pt-8 text-center px-4 relative z-10 sr-only">
+            <h1>Dima Hasao Tourism</h1>
+            <h2>Jhuthai</h2>
+            <p>Welcome to Dima Hasao</p>
+        </div>
+        <!-- END: Header Section -->
+        <!-- BEGIN: Login Card Container -->
+        <div class="absolute bottom-4 left-4 right-4">
+            <!-- The dark green card -->
+            <div
+                class="bg-brand-green border border-brand-gold rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.5)] relative overflow-hidden">
+                <!-- Subtle leaf pattern overlay (approximated with CSS radial gradients if needed, but keeping it solid dark green for simplicity as it's very subtle in the original) -->
+                <div class="absolute inset-0 opacity-10 pointer-events-none"
+                    style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 20px 20px;">
+                </div>
+                <!-- Title -->
+                <div class="flex items-center justify-center space-x-3 mb-6 relative z-10">
+                    <i class="fa-solid fa-leaf text-brand-gold text-sm transform -scale-x-100"></i>
+                    <h3 class="text-brand-gold font-semibold tracking-wider text-sm">LOGIN TO YOUR ACCOUNT</h3>
+                    <i class="fa-solid fa-leaf text-brand-gold text-sm"></i>
+                </div>
+                <!-- BEGIN: Form -->
+                <form action="#" class="space-y-4 relative z-10" method="POST">
+                    <!-- Phone Number Input -->
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-phone text-brand-gold"></i>
+                        </div>
+                        <input
+                            class="block w-full pl-11 pr-3 py-3 border border-brand-gold/50 rounded-xl bg-brand-dark-green text-gray-300 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold sm:text-sm transition-colors"
+                            id="phone" name="phone" placeholder="Phone Number" type="tel" />
+                    </div>
+                    <!-- Password Input -->
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-lock text-brand-gold"></i>
+                        </div>
+                        <input
+                            class="block w-full pl-11 pr-10 py-3 border border-brand-gold/50 rounded-xl bg-brand-dark-green text-gray-300 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold sm:text-sm transition-colors"
+                            id="password" name="password" placeholder="Password" type="password" />
+                        <button
+                            class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-300"
+                            type="button">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                    <!-- Forgot Password Link -->
+                    <div class="flex justify-end pt-1">
+                        <a class="text-brand-gold text-xs font-medium hover:text-brand-gold-light transition-colors"
+                            href="#">Forgot Password?</a>
+                    </div>
+                    <!-- Login Button -->
+                    <button
+                        class="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-sm text-base font-bold text-black bg-gradient-to-r from-brand-gold-dark via-brand-gold-light to-brand-gold-dark hover:from-brand-gold-light hover:to-brand-gold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-gold focus:ring-offset-brand-green"
+                        type="submit">
+                        LOGIN
+                    </button>
+                </form>
+                <!-- END: Form -->
+                <!-- BEGIN: Social Login & Footer -->
+                <div class="mt-6 relative z-10">
+                    <!-- Divider -->
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-brand-gold/30"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span
+                                class="px-3 bg-brand-green text-brand-gold font-medium tracking-wide flex items-center space-x-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                                <span>OR CONTINUE WITH</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Social Buttons -->
+                    <div class="mt-6 flex justify-center space-x-5">
+                        <!-- Google -->
+                        <button
+                            class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 transition-colors"
+                            type="button">
+                            <img alt="Google" class="w-6 h-6"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLeqN13rlXv-44xRAQ-nGDsa9Tzl8-nZnA4mOmR6S_UXReRXl3VJPkszskBAfqg_VTL7msfRCXQX9LF1AuM6fvYQ9soNvATpm6Lv-40gMq4HLAey6hv0NHTdgHq6FWkTC0V7uEu03rWOHbcg0QdUyF5iF05n6dLDmYN25g8ZoFotl1lxprPrQqmCs1i_h5DlhvxV4tBZdS0k8VOgcXX6dTvH1U5CxjOyBtHjKUhLKOnV4RX9d0Clc" />
+                        </button>
+                        <!-- Facebook -->
+                        <button
+                            class="w-12 h-12 bg-[#1877F2] rounded-full flex items-center justify-center shadow-md hover:bg-[#166fe5] transition-colors"
+                            type="button">
+                            <i class="fa-brands fa-facebook-f text-white text-xl"></i>
+                        </button>
+                        <!-- Apple -->
+                        <button
+                            class="w-12 h-12 bg-black rounded-full flex items-center justify-center shadow-md hover:bg-gray-900 transition-colors"
+                            type="button">
+                            <i class="fa-brands fa-apple text-white text-xl pb-1"></i>
+                        </button>
+                    </div>
+                    <!-- Sign Up Link -->
+                    <div class="mt-6 text-center text-sm text-gray-300">
+                        Don't have an account?
+                        <a class="font-medium text-brand-gold hover:text-brand-gold-light transition-colors"
+                            href="#">Sign Up</a>
+                    </div>
+                </div>
+                <!-- END: Social Login & Footer -->
+            </div>
+        </div>
+        <!-- END: Login Card Container -->
+    </main>
+    <!-- END: MainContainer -->
+</body>
+
+</html>
+
+<!-- Home Screen -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dima Hasao Tourism</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style data-purpose="custom-fonts">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdfbf7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+    <style data-purpose="custom-styles">
+        /* Custom styles for gradients and specific elements */
+        .bg-gradient-tourist {
+            background: linear-gradient(to bottom, #2ca972, #186a43);
+        }
+
+        .bg-gradient-taxi {
+            background: linear-gradient(to bottom, #fb9a40, #e06c1c);
+        }
+
+        .bg-gradient-hotels {
+            background: linear-gradient(to bottom, #8a4ed9, #562396);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .pattern-border {
+            background-image: repeating-linear-gradient(45deg, #000 0, #000 10px, #e53e3e 10px, #e53e3e 20px, #f6e05e 20px, #f6e05e 30px);
+            height: 6px;
+            width: 100%;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800 pb-20">
+    <!-- BEGIN: Header Section -->
+    <header class="relative w-full h-[350px] overflow-hidden rounded-b-3xl" data-purpose="main-header">
+        <!-- Background Image -->
+        <div class="absolute inset-0 w-full h-full">
+            <img alt="Header Background" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAisXJyBuwvtu3RwaO56QvfH4gOMAxK-8JVUZ-5T_0OsStjONvhXG6zMD2BcQ9EuUDZzSwZ1zuTlnst7xFPkf7yeqgeiX3VnbAQCDxMW2TaiWgIYsBobvZ8uXui6Fcvjh4R-wR-ufkS7iR-bPyLVgH4KahVsxSpBN7-k0CRlOg_MUk31J_1PvunJ_78_6Ba54YPIva1RKzXP-ONbIL_3of7pf5SVRjfR30Jbd5I0XwlQfYmDGZIaGsB" />
+        </div>
+        <!-- Top Nav Icons -->
+        <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
+            <button
+                class="w-10 h-10 bg-green-900 text-white rounded-full flex items-center justify-center shadow-lg border-2 border-white/20">
+                <i class="fas fa-bars text-lg"></i>
+            </button>
+            <button
+                class="w-10 h-10 bg-green-900 text-white rounded-full flex items-center justify-center shadow-lg border-2 border-white/20 relative">
+                <i class="fas fa-bell text-lg"></i>
+                <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-green-900"></span>
+            </button>
+        </div>
+        <!-- Main Header Content -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10 pt-10 pb-8 px-4 text-center">
+            <!-- Logo Area (Placeholder) -->
+            <div
+                class="w-32 h-32 bg-white rounded-full shadow-xl mb-4 border-4 border-green-700 overflow-hidden relative left-[-30%] top-[-10%] sm:static sm:mb-4">
+                <img alt="Dima Hasao Tourism Logo" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpKxrrAMcqCtg37mOIMy8mnnPSo8mnfzA-MY5AedXF8YNQhVosR5R3-lX84Q6dcift5Cjgeb80xCIQAfBZdr2Z0TUrt63N04m_YREpwR6nNEvhau2t5w_m1TWqzMV2vv9rfXYXRLE3E0U6C2850nQo_Uf5zlnUiwI0Z_XpUW3GMVUUIksTboYKNEitTtDa_CBLJk2Kqdp3wjkeHiFjWQ5C5pMKE_7EFyBLWxOjGpWFCS8oTzC3YaFO" />
+            </div>
+            <!-- Text Overlay -->
+            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg w-3/4 ml-auto sm:mx-auto">
+                <h2 class="text-red-600 font-bold text-3xl mb-1 drop-shadow-md">JHUTHAI!</h2>
+                <div class="flex items-center justify-center gap-2 mb-1">
+                    <div class="h-px bg-gray-400 w-8"></div>
+                    <p class="text-xs font-semibold tracking-wider text-green-900 uppercase">Welcome To</p>
+                    <div class="h-px bg-gray-400 w-8"></div>
+                </div>
+                <h1 class="font-montserrat text-4xl font-black text-green-800 drop-shadow-lg leading-tight mb-2">DIMA
+                    HASAO</h1>
+                <p class="text-blue-800 font-semibold italic text-sm">Explore • Experience • Discover</p>
+            </div>
+        </div>
+    </header>
+    <!-- END: Header Section -->
+    <!-- BEGIN: Search Bar Area -->
+    <div class="relative -mt-8 z-20 px-4" data-purpose="search-bar-container">
+        <div class="pattern-border absolute left-0 right-0 top-1/2 -translate-y-1/2 z-0"></div>
+        <div class="bg-white rounded-full shadow-lg p-2 flex items-center border-4 border-green-800 relative z-10 mx-2">
+            <i class="fas fa-search text-gray-500 ml-4 mr-3 text-lg"></i>
+            <input class="w-full bg-transparent border-none focus:ring-0 text-sm py-2"
+                placeholder="Search places, hotels, cabs..." type="text" />
+            <i class="fas fa-microphone text-green-700 mr-4 text-lg"></i>
+        </div>
+    </div>
+    <!-- END: Search Bar Area -->
+    <!-- BEGIN: Main Content Area -->
+    <main class="px-4 pt-6 pb-6 space-y-6" data-purpose="main-content">
+        <!-- BEGIN: Primary Category Cards -->
+        <div class="flex overflow-x-auto hide-scrollbar gap-4 pb-4 -mx-4 px-4 snap-x" data-purpose="primary-categories">
+            <!-- Tourist Places Card -->
+            <div
+                class="min-w-[160px] w-[160px] h-[240px] rounded-2xl overflow-hidden relative shadow-lg snap-center shrink-0">
+                <div class="absolute inset-0 bg-gradient-tourist z-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center pt-4 z-10">
+                    <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center mb-2">
+                        <i class="fas fa-map-marker-alt text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-sm text-center leading-tight">TOURIST PLACES</h3>
+                    <p class="text-white/80 text-[10px] text-center mt-1 px-2">Explore the Beauty<br />of Dima Hasao</p>
+                </div>
+                <div class="absolute bottom-12 left-0 right-0 h-1/2 z-0">
+                    <img alt="Tourist Places" class="w-full h-full object-cover rounded-t-[40px]"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNCBOtk-v5CpAuzZ1kd7mndMkJZKKwMy00a2zicQ0HpEEfpw427eAibYCSi2nD2wHFUkrbD1pzwIzejGOFn5WqC6zu_oE1z2PO5Z2B1LMuzEvrGDcapXZ2xU8jST_VXGR9TxKd25HsrNfffLqEY_Xm1289lDT9d4F7I68sPPhKOmC33cLzcrcIo7RfCXTsf-KCLrE92u-ebldONSuUSfat64_5N4AFn8Z0bfjeYXSmC8Y2I5u8t3g1" />
+                </div>
+                <div class="absolute bottom-3 left-0 right-0 px-3 z-10">
+                    <button
+                        class="w-full bg-green-900 text-white rounded-full py-1.5 text-xs font-semibold flex items-center justify-center gap-1 shadow-md">
+                        Explore Now <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Taxi / Auto Card -->
+            <div
+                class="min-w-[160px] w-[160px] h-[240px] rounded-2xl overflow-hidden relative shadow-lg snap-center shrink-0">
+                <div class="absolute inset-0 bg-gradient-taxi z-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center pt-4 z-10">
+                    <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center mb-2">
+                        <i class="fas fa-car text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-sm text-center leading-tight">TAXI / AUTO</h3>
+                    <p class="text-white/80 text-[10px] text-center mt-1 px-2">Book Your Ride,<br />Travel with Ease</p>
+                </div>
+                <div class="absolute bottom-12 left-0 right-0 h-1/2 z-0">
+                    <img alt="Taxi" class="w-full h-full object-cover rounded-t-[40px]"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCJDblprWgYBvh1_FLMSBqIvOXSdwgS_fPcH_MyWvag50_LwhLZums5qzaDWSIT0HbG0SJMToG7JpPvejlX3Qy5bLkCG38QZIqu5mBcSGP2wl3HGzM_X0PCK0xdHmNkET-dGu7TRc-monu00rabiXzQRo3EhbHNOkDMNkXrPK1awEDEd4ZGfwJUS4cVNDcKYVkqKl3pjgKMkPrLtYQA-IL07hjQc-c-KZlD6NT-lo8WH27nCiKI8JN" />
+                </div>
+                <div class="absolute bottom-3 left-0 right-0 px-3 z-10">
+                    <button
+                        class="w-full bg-orange-600 text-white rounded-full py-1.5 text-xs font-semibold flex items-center justify-center gap-1 shadow-md">
+                        Book Now <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Hotels Card -->
+            <div
+                class="min-w-[160px] w-[160px] h-[240px] rounded-2xl overflow-hidden relative shadow-lg snap-center shrink-0">
+                <div class="absolute inset-0 bg-gradient-hotels z-0"></div>
+                <div class="absolute inset-0 flex flex-col items-center pt-4 z-10">
+                    <div class="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center mb-2">
+                        <i class="fas fa-bed text-white text-lg"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-sm text-center leading-tight">HOTELS</h3>
+                    <p class="text-white/80 text-[10px] text-center mt-1 px-2">Comfortable Stays<br />for Every Journey
+                    </p>
+                </div>
+                <div class="absolute bottom-12 left-0 right-0 h-1/2 z-0">
+                    <img alt="Hotels" class="w-full h-full object-cover rounded-t-[40px]"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu5Pbf3ToUuNDG3Ykr_oqb6a2-hh7vSE60pCjbagFjqrigh7ETKBYtUYP7bOC8sCPqF0oHQXdi1TbZ6LCZblOychxaZYt5SDhg9YBw8bMVPI1wmeURSYs_MNOhhGyoCRPAC9-VGTQdSfd8KZYlU0HzlecyFoFwn74vcZ8e1vWAXxYQSCHsoElObyZAiJJcMFxfV2a_b6cT4dn9fzfOO2k4ySEorPC6hLD-PnNLxB8w9sDFxhc1j9FU" />
+                </div>
+                <div class="absolute bottom-3 left-0 right-0 px-3 z-10">
+                    <button
+                        class="w-full bg-purple-700 text-white rounded-full py-1.5 text-xs font-semibold flex items-center justify-center gap-1 shadow-md">
+                        View Hotels <i class="fas fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- END: Primary Category Cards -->
+        <!-- BEGIN: Quick Links Grid -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4" data-purpose="quick-links">
+            <div class="grid grid-cols-5 gap-2">
+                <!-- Local Guide -->
+                <div class="flex flex-col items-center justify-center gap-2">
+                    <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                        <i class="fas fa-user-tie text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-center leading-tight">Local Guide</span>
+                </div>
+                <!-- Events & Festivals -->
+                <div class="flex flex-col items-center justify-center gap-2 border-l border-gray-100 pl-2">
+                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500">
+                        <i class="fas fa-calendar-alt text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-center leading-tight">Events &amp;<br />Festivals</span>
+                </div>
+                <!-- Travel Packages -->
+                <div class="flex flex-col items-center justify-center gap-2 border-l border-gray-100 pl-2">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+                        <i class="fas fa-suitcase-rolling text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-center leading-tight">Travel<br />Packages</span>
+                </div>
+                <!-- Food & Cuisine -->
+                <div class="flex flex-col items-center justify-center gap-2 border-l border-gray-100 pl-2">
+                    <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-red-500">
+                        <i class="fas fa-utensils text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-center leading-tight">Food &amp;<br />Cuisine</span>
+                </div>
+                <!-- Emergency Help -->
+                <div class="flex flex-col items-center justify-center gap-2 border-l border-gray-100 pl-2">
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                        <i class="fas fa-phone-alt text-xl"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-center leading-tight">Emergency<br />Help</span>
+                </div>
+            </div>
+        </div>
+        <!-- END: Quick Links Grid -->
+        <!-- BEGIN: Promotional Banner -->
+        <div class="relative w-full h-[150px] rounded-2xl overflow-hidden shadow-md" data-purpose="promo-banner">
+            <img alt="Discover Dima Hasao" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu4pmPYVoooGutS4BGHL_h3AM91HWpb0p3I7_YN0nNkKK4xpIAkqN1ItQCz_Nsd7DbcowZqup9rTFIBowf5I0Jrs-It5TrdAccxzvRgaSof8HlnftQt9lj9LGKzYmk8zjtnKHKT-LCqDhuT2NBwxGfEZNfaUZp_KgB0pmGPOfzFx8k8fbx2PpkAiM0dtzfVKXnMWQIZep3NYZwMvUPV44vu4xjr9xNtuKhBw0r9VIi49A_dvZwhxmZ" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+            <div class="absolute inset-y-0 left-0 p-5 flex flex-col justify-center w-2/3">
+                <h3 class="text-white font-bold text-lg leading-tight mb-3">DISCOVER THE<br />UNTOLD BEAUTY OF<br />DIMA
+                    HASAO</h3>
+                <button
+                    class="bg-green-900 text-white text-xs font-semibold py-2 px-4 rounded-full w-max flex items-center gap-2 shadow-lg">
+                    Plan Your Trip Now <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <!-- Decorative Circular Images -->
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex -space-x-4">
+                <div class="w-16 h-16 rounded-full border-2 border-white overflow-hidden shadow-md">
+                    <img alt="Waterfall" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC108lv_9CPfPNfOkpM5KYz_jfhw2KCYt07kDJO9hCc10qB8K4CBw33m0IYPeNQp067svXvaaUtgtWZqsYNJX2EAt0QmvJIrjhL-ek6hQlVyILxypz9DxpkYZUumfsQMkY9TWApYr6ljP1g1FD2-CREC2OFa-1Q7g8GMGvFRY5I0cwKk-ub1VaVmee3OD_xH8c37DZ2Nt0devqWwyGVP9W7rdSHzCWljEvJqszVnA4BfYJ9EBfstS3E" />
+                </div>
+                <div class="w-20 h-20 rounded-full border-2 border-white overflow-hidden shadow-lg z-10">
+                    <img alt="Hut" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9OVQT2F4U3UCbj1R36Pf9RoO55plzYwcyG7CbP8Pl9iwOPzyhTlzMp8FofrKumbS1VqHdYenAWx-npU_pwVpwTPNlca73avPjigjhR4r1tHscXDy72auwr0VaOmDGW5r_M2rqUnfjQ-hVOtnQtR7WqQcDb_i7XYepyjk_hCJ6TytSEwLQxdaTjeLgQjN8z-X2IXY70QjQ3MDgvef0H90p4_nYvpLouewqmyA9YgX1M7HzBLAMoAxq" />
+                </div>
+            </div>
+        </div>
+        <!-- END: Promotional Banner -->
+        <!-- BEGIN: Why Visit Section -->
+        <div class="bg-[#fcf8ed] rounded-2xl p-4 shadow-sm border border-orange-100 mb-6" data-purpose="why-visit">
+            <h3 class="text-center font-bold text-gray-800 mb-4 text-sm">Why Visit Dima Hasao?</h3>
+            <div class="grid grid-cols-4 gap-2">
+                <!-- Scenic Beauty -->
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-12 h-12 mb-1 flex items-center justify-center">
+                        <img alt="Scenic Beauty" class="h-10 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBirBdgpCgVRZG--JmlmDf09GGKNGvrI7x5yoOGutZcFLhSYeN3gqXXTVLTYM5AfHDEz4ie5eCcbXqO_oGhUMUfmQHqEn3qiFQwqGDS9JW6jnALzsJS6hwkB7WCjIoS9wl_C3mTDH1ccAMQgpCodQ6tgcvf5nI4MvQYsV4inDIhTtsMfDa2-ZLseYmRTLJXm9TxkYLdcTjV8NFi0Hjjt27L4AaSVUIefNbcWpPozJ1PbdNLAf0NYMYF" />
+                    </div>
+                    <span class="text-[9px] font-semibold text-gray-700">Scenic Beauty</span>
+                </div>
+                <!-- Rich Culture -->
+                <div class="flex flex-col items-center text-center border-l border-orange-200">
+                    <div class="w-12 h-12 mb-1 flex items-center justify-center">
+                        <img alt="Rich Culture" class="h-10 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW4r3ufYU1J0jaqGt5fSpWFzmCcMd-cLsw9ESxrbsINf3veLIlTRI0pF39WAiKhmubqk3gJD3jzR7GKHwe1bxEsx1Kx-T9ZxETIjTspoW8hOPS_Ct8kcmUwcYCas3A4KluXLQNkNjvgP-7xJ5Q6kvMPUhJCTo_RwPg5n5wKV9zIiMvgYVHptobih82lL2fppYZIg1-FHw8ludSJ5BRWoT2PqF7G5FlT3JqQsEuYMeFXKPF0GhiprLv" />
+                    </div>
+                    <span class="text-[9px] font-semibold text-gray-700">Rich Culture</span>
+                </div>
+                <!-- Adventure -->
+                <div class="flex flex-col items-center text-center border-l border-orange-200">
+                    <div class="w-12 h-12 mb-1 flex items-center justify-center">
+                        <img alt="Adventure" class="h-10 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqvpYlSR7lzK_I2udWZGaaur6PTBETP2D9RnCdghfXYc4t7kWHui2_HlK7PzteuilAVf-CraVl3U0Bs3Uuosq8vFuQpt8WXXcI77VSwsutNMPL1wfUEQf0Jx9QVJGeb_Jlime_XwuP1Pdvrlgus-pQsaQq_lOj6ly10KGAPbp9V_FjKyPkS5Z54rqMEZBtb2YY4GV20v2mJ7B-2s9UiL5YfhIWolpNvovVe-rJK7xYJMcQkyp0Ln8C" />
+                    </div>
+                    <span class="text-[9px] font-semibold text-gray-700">Adventure</span>
+                </div>
+                <!-- Warm Hospitality -->
+                <div class="flex flex-col items-center text-center border-l border-orange-200">
+                    <div class="w-12 h-12 mb-1 flex items-center justify-center">
+                        <img alt="Warm Hospitality" class="h-8 object-contain"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvNVLSLd9hVkSoTIhbmJ5YXmYDyVHBlJtbbondIlw2jA447nT0-_x6j9_T8BnYW68pZmSB9bYdFlsjPDy2t6xb9klFGae3-KiE0FJ-tP4VAxXQuT_n8DwBB5Ba5WI11c1ehn7hP1hH5qSPjDJjpCQN9YA4yvCtP4vBudmwmve9f8v4HZ_s-3yVYx1c2_q2GX78bfqfxxsZtSneCgEBHaAmgxCC9ek8xFk5q1LR6IOf2NAMPdsUuiWt" />
+                    </div>
+                    <span class="text-[9px] font-semibold text-gray-700">Warm Hospitality</span>
+                </div>
+            </div>
+        </div>
+        <!-- END: Why Visit Section -->
+    </main>
+    <!-- END: Main Content Area -->
+    <!-- BEGIN: Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 w-full bg-[#0a3a22] text-white rounded-t-3xl px-6 py-3 shadow-[0_-5px_15px_rgba(0,0,0,0.1)] z-50"
+        data-purpose="bottom-nav">
+        <div class="flex justify-between items-center relative">
+            <!-- Home Tab -->
+            <a class="flex flex-col items-center gap-1 w-16 text-yellow-400" href="#">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-[10px] font-medium">Home</span>
+            </a>
+            <!-- My Bookings Tab -->
+            <a class="flex flex-col items-center gap-1 w-16 text-gray-300 hover:text-white" href="#">
+                <i class="far fa-calendar-check text-xl"></i>
+                <span class="text-[10px] font-medium">My Bookings</span>
+            </a>
+            <!-- Center Floating Button -->
+            <div class="relative w-16 h-12 flex justify-center -mt-8">
+                <div
+                    class="absolute bg-white rounded-full p-1 shadow-lg w-16 h-16 flex items-center justify-center border-4 border-[#0a3a22]">
+                    <img alt="Center Action" class="w-full h-full rounded-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHxXjaqg_p2_vshVQlQARltQKITPTxRdxMMlP-3QyFF5y8e2b25l5rewGDv8hjTJT1mIeodoXkQyW5Q5DbamrNM5Wqkn9zC5hXH-uNiaqjmuWSf0eYIG090j8R2skAqbm4nCA9jzMl8Rca5t2ANsI31UQDQpgiAqnjiXgjeFcP5hsy0iTh8orLvaeTNhXhfOJY7K7F6qam7R85TVEaEb8naGgso3oEml2Ix6YFyN-Jua917AHlmZIs" />
+                </div>
+            </div>
+            <!-- Profile Tab -->
+            <a class="flex flex-col items-center gap-1 w-16 text-gray-300 hover:text-white" href="#">
+                <i class="far fa-user-circle text-xl"></i>
+                <span class="text-[10px] font-medium">Profile</span>
+            </a>
+            <!-- More Tab -->
+            <a class="flex flex-col items-center gap-1 w-16 text-gray-300 hover:text-white" href="#">
+                <i class="fas fa-ellipsis-h text-xl"></i>
+                <span class="text-[10px] font-medium">More</span>
+            </a>
+        </div>
+    </nav>
+    <!-- END: Bottom Navigation Bar -->
+</body>
+
+</html>
+
+<!-- Tourist Places List -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tourist Places List Screen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style data-purpose="custom-fonts">
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg-main {
+            background-color: #fdf5e6;
+        }
+
+        /* Cream background */
+        .text-primary-dark {
+            color: #0a3a2a;
+        }
+
+        /* Dark Green */
+        .text-accent-red {
+            color: #cc1b21;
+        }
+
+        /* Red accent */
+        .bg-primary-dark {
+            background-color: #0a3a2a;
+        }
+    </style>
+</head>
+
+<body class="bg-main text-gray-800 font-inter max-w-md mx-auto min-h-screen flex flex-col relative overflow-x-hidden">
+    <!-- BEGIN: HeaderSection -->
+    <header class="bg-primary-dark text-white px-4 py-3 flex items-center justify-between sticky top-0 z-50">
+        <button aria-label="Go Back" class="text-white text-xl">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <div class="text-center flex-1">
+            <h1 class="text-xl font-bold tracking-widest flex items-center justify-center gap-2">
+                <span class="text-orange-400 text-sm"><i class="fas fa-leaf"></i></span>
+                TOURIST PLACES
+                <span class="text-orange-400 text-sm"><i class="fas fa-leaf"></i></span>
+            </h1>
+            <p class="text-xs italic font-playfair text-gray-200 mt-1">Explore the Beauty of Dima Hasao</p>
+        </div>
+        <button aria-label="Search" class="text-white text-xl">
+            <i class="fas fa-search"></i>
+        </button>
+    </header>
+    <!-- END: HeaderSection -->
+    <!-- BEGIN: TopPatternDivider -->
+    <div class="h-4 w-full bg-cover bg-center bg-repeat-x"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8IzS0KGsZzD_ZsijD_Vb-LZQpKYgIWw4VohpFMmr933UP-N_Zhpooyqs6qZAdZtoClS1TrtsQyKiEtEwz02mvF9OVsLkZoYmTdDejXyjP3MPItv6cvhDIXboFC6uVubOjFoeXcjnSvL-TQrfbiS9x0SdHlqxY0gDn7Z_YF3u_PcOnSyWqCG7YdQpCPTj-IAkK4JzgzYfttLKrc63d9Lk4R3zd8Z8fi_3NQWZ1QjZ3i-lDnAYQpArL');">
+    </div>
+    <!-- END: TopPatternDivider -->
+    <!-- BEGIN: MainContent -->
+    <main class="flex-1 p-4 flex flex-col gap-6">
+        <!-- Card 1: Jatinga -->
+        <article class="bg-white rounded-xl shadow-md overflow-hidden border border-orange-200 relative pb-4">
+            <div class="relative h-64 w-full">
+                <img alt="I Love Dima Hasao Sign with mountains" class="w-full h-full object-cover rounded-t-xl"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR1S42BYEdvdC8fBzDJ3dgfRWo5cmdzuf01VwynFEOO2zAbH3hgjPCALgGwzJBIaE8aPLRDZHrZHblgHmhttj0wh1tqEvt8-N3FHbJ2nBvO-NI7DPzgijaQCZbSsd-Gbs-iwXmtnLY1RhTE1ZRVBypIMpDFedyjqrzb7IHqCD8alrIgaNCfWSZf3EA_Gcolyb2iCYmvk9AHidCREdBzSSS_P5Yxxzymt2zVcwbF0YtUMSO1QvxyypW" />
+                <!-- Inset Image -->
+                <div
+                    class="absolute -bottom-10 right-4 w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg z-10 bg-white">
+                    <img alt="Shivrai Temple" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnndqgysVmvho-y1_bZpIPzl1HctAeUVACCFuIQ4z0APfvtUbML_eCA8vXJoL7f6reH6vBnSQeEk_-VkXgHjXthXbK796zeXJPmTy7iEfPEd6DJdcfrCnOQ-EtHU-7C_xz6JzZHDhRNfh9-3o5n5YxIEsZcddTJ9hvFWxFTQfUgWluETRlx5lfkrahwv7fMJFjXWuOvzPvF4L8hXFzHTOOdIKYYb75jNzggAwCw8KgCEoNGc1YMGlc" />
+                </div>
+            </div>
+            <div class="p-4 pt-12">
+                <h2 class="text-lg font-bold text-primary-dark mb-1">1. I LOVE DIMA HASAO</h2>
+                <h3 class="text-sm font-bold text-accent-red mb-1">JATINGA VIEW POINT <br /> &amp; SHIVRAI TEMPLE</h3>
+                <p class="text-xs text-gray-600 mb-2 flex items-center gap-1">
+                    <i class="fas fa-map-marker-alt text-accent-red"></i> Jatinga, Dima Hasao
+                </p>
+                <p class="text-xs leading-relaxed text-gray-700 mb-4">
+                    Famous for the mysterious bird phenomenon during monsoon evenings. The viewpoint offers breathtaking
+                    sunsets and panoramic views. The nearby Shivrai Temple is a peaceful spiritual place.
+                </p>
+                <div class="flex items-center gap-3 text-[10px] text-gray-600 mb-4">
+                    <span class="flex items-center gap-1"><i class="fas fa-camera text-green-600 text-sm"></i> Scenic
+                        View</span>
+                    <span class="flex items-center gap-1"><i class="fas fa-vihara text-red-600 text-sm"></i> Spiritual
+                        Place</span>
+                    <span class="flex items-center gap-1"><i class="fas fa-sun text-orange-500 text-sm"></i> Sunset
+                        Point</span>
+                </div>
+            </div>
+            <div class="px-4">
+                <button
+                    class="w-full bg-primary-dark text-white rounded-full py-2 font-semibold flex items-center justify-center gap-2 hover:bg-green-800 transition-colors">
+                    EXPLORE <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+        <!-- Card 2: Haflong Town -->
+        <article class="bg-white rounded-xl shadow-md overflow-hidden border border-orange-200 relative pb-4">
+            <div class="relative h-64 w-full">
+                <img alt="Haflong Town view" class="w-full h-full object-cover rounded-t-xl"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXi2ZL8A9d6xh4eTNmtYQjrrm2eXevSbbq7AM8cec1gAAGRhO5iaDNLcXgpt3Ni3xqaMLiOKVbn5jPfxLgauo6ZSfyyWUCHXQsRiDIJjkX796WSnav0VI6DhcRJreMW6lZKSwYO7klZC8rnjeYjQxepwv_UDdf-IBgeUFipTd-BPADaUSyULhlZOf5e33u4UQeFc0ui3ed4pGxvFaPhi-IL7aPxN6YGlJHbWygfV2Hlgayr2K-jHaQ" />
+                <!-- Inset Image -->
+                <div
+                    class="absolute -bottom-10 right-4 w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg z-10 bg-white">
+                    <img alt="Church in Haflong" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_dxnfgimhr3N-5YkfseQ1lbUHgooA3kXI3T7qR-2rcz2oP_tvCo_S3MzEA-iw0H0s9lMRX8vbvT2Beygb55sWGBEj4mD5yqi1oBOjLMtL5OlRFTbHBdgc3IOLV3NbeuNTiEBjtSwOXLJNcc7zh-ZVYEw_nOqL_Mt4HwdPlCOwczoB2Kac3nJBVVfCtR99vAvYmup3op1bFN-EGnAq_RC1uAVVYds1pjh3XsLCr1AmcP2AmgFOgnDi" />
+                </div>
+            </div>
+            <div class="p-4 pt-12">
+                <h2 class="text-lg font-bold text-primary-dark mb-1">2. HAFLONG TOWN</h2>
+                <p class="text-xs text-gray-600 mb-2 flex items-center gap-1">
+                    <i class="fas fa-map-marker-alt text-accent-red"></i> Haflong, Dima Hasao
+                </p>
+                <p class="text-xs leading-relaxed text-gray-700 mb-4">
+                    The administrative headquarters of Dima Hasao. A beautiful hill town with pleasant climate, rich
+                    culture, local markets, and warm hospitality. Explore the local life, churches, temples and scenic
+                    landscapes.
+                </p>
+                <div class="flex items-center gap-3 text-[10px] text-gray-600 mb-4">
+                    <span class="flex items-center gap-1"><i class="fas fa-shopping-bag text-orange-500 text-sm"></i>
+                        Local Markets</span>
+                    <span class="flex items-center gap-1"><i class="fas fa-church text-gray-700 text-sm"></i> Cultural
+                        Sites</span>
+                    <span class="flex items-center gap-1"><i class="fas fa-camera text-blue-500 text-sm"></i> Scenic
+                        Beauty</span>
+                </div>
+            </div>
+            <div class="px-4">
+                <button
+                    class="w-full bg-primary-dark text-white rounded-full py-2 font-semibold flex items-center justify-center gap-2 hover:bg-green-800 transition-colors">
+                    EXPLORE <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+        <!-- Card 3: Silaikul Peak -->
+        <article class="bg-white rounded-xl shadow-md overflow-hidden border border-orange-200 relative pb-4">
+            <div class="relative h-64 w-full">
+                <img alt="Green hills of Silaikul Peak" class="w-full h-full object-cover rounded-t-xl"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJOmVn8J7y0XtU_CzS5fuBp9op-62F78mTvCvZlchAdzruqs-vXdByV16hQrL2AFth2YfoMqo5LhbPaclGFfPEwMVCZ_jMOD51w5RHud1v4ay5i2PYZHZa19BVtLiS2Py3n4XBCQjppa9_yjTimzR6bDlc45CEj8yhTtT5y9gJSlHFi3K6GJ5JXv1fUW4f6nWcU0owIga29YigAyfVgR_ryUU7IDxvikwxhJ8ZFgtYd-XTljzZxeRo" />
+                <!-- Inset Image -->
+                <div
+                    class="absolute -bottom-10 right-4 w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg z-10 bg-white">
+                    <img alt="Entrance Gate" class="w-full h-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwtntIzjpIuKW4YygP97_oytQQLHKZGp_LS0stxpS-e2ifHlTdW072m5Nn7lrk4YXIPE3i0gulIslJKYblI5O7xlJ94u761qsCzef_FfoVibC16-tKLdrW-EnaNezOb41Pbg74GbiXbxZkF2FLKu9bFALyv5XbZCwBolXJjjhhIYyObP_F55jjWzEeK2CVpZxED__z_OjKzT0tUC8Ak6bgIiHR2u6C9LkM57ZlNix7uIi8KiwJBFvP" />
+                </div>
+            </div>
+            <div class="p-4 pt-12">
+                <h2 class="text-lg font-bold text-primary-dark mb-1">3. SILAIKUL PEAK</h2>
+                <p class="text-xs text-gray-600 mb-2 flex items-center gap-1">
+                    <i class="fas fa-map-marker-alt text-accent-red"></i> Silaikul, Dima Hasao
+                </p>
+                <p class="text-xs leading-relaxed text-gray-700 mb-4">
+                    The highest peak in Dima Hasao offering stunning panoramic views of the entire hill district. Ideal
+                    for trekking, camping and nature lovers.
+                </p>
+                <div class="flex items-center gap-3 text-[10px] text-gray-600 mb-4">
+                    <span class="flex items-center gap-1"><i class="fas fa-mountain text-green-700 text-sm"></i>
+                        Trekking</span>
+                    <span class="flex items-center gap-1"><i class="fas fa-campground text-gray-800 text-sm"></i>
+                        Camping</span>
+                    <span class="flex items-center gap-1"><i class="fas fa-binoculars text-blue-600 text-sm"></i>
+                        Panoramic View</span>
+                </div>
+            </div>
+            <div class="px-4">
+                <button
+                    class="w-full bg-primary-dark text-white rounded-full py-2 font-semibold flex items-center justify-center gap-2 hover:bg-green-800 transition-colors">
+                    EXPLORE <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
+    </main>
+    <!-- END: MainContent -->
+    <!-- BEGIN: BottomPatternDivider -->
+    <div class="h-4 w-full bg-cover bg-center bg-repeat-x"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAAgeHdasE4rjjrzR_ZkK4VIyQi27wXpXckL6uTVVFX4ZKw_gOdbdLt5rI-Ni_fJ98smSOnJAOt1kJE3fDFF8A2kMs10g1Fny3d78pybVh_Q2w8o25Cq5IB28A20E7bcFhDKbl88bABug4FtE49bxZgpdRIgP-KHmAHZwXXmn3jPnlw1GfYTCuoOI1Zu95orZLytaMRTkutt-_UenRZ9Piu2XlJWfRyRsJLb7yIZZa-dto47Z1ntyDH');">
+    </div>
+    <!-- END: BottomPatternDivider -->
+    <!-- BEGIN: FooterSection -->
+    <footer class="bg-primary-dark text-white p-6 text-center">
+        <p class="font-playfair text-lg italic text-orange-200">
+            <span class="text-green-500 mr-2"><i class="fas fa-leaf"></i></span>
+            Plan your trip, stay safe <br /> and enjoy the beauty of Dima Hasao!
+            <span class="text-green-500 ml-2"><i class="fas fa-leaf"></i></span>
+        </p>
+        <div class="mt-4 flex justify-center gap-1 opacity-50">
+            <!-- Decorative dots -->
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-400 block"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-400 block"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-400 block"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-400 block"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-orange-400 block"></span>
+        </div>
+    </footer>
+    <!-- END: FooterSection -->
+</body>
+
+</html>
+
+<!-- Tourist Place Detail -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tourist Place Detail Screen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style data-purpose="custom-fonts">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b2e13;
+            /* Dark green background */
+        }
+    </style>
+    <script data-purpose="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-dark-green': '#0b2e13',
+                        'custom-light-beige': '#fdfbf7',
+                        'custom-brown': '#6d4c41',
+                        'custom-red': '#d32f2f',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-gray-800 antialiased min-h-screen pb-10">
+    <!-- BEGIN: Header -->
+    <header class="bg-custom-dark-green text-white p-4 sticky top-0 z-50 flex items-center justify-between">
+        <button class="p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <div class="text-center">
+            <h1 class="text-xl font-bold tracking-wider flex items-center justify-center gap-2">
+                <svg class="h-5 w-5 text-yellow-500" fill="currentColor" viewbox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd"
+                        d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"
+                        fill-rule="evenodd"></path>
+                </svg>
+                TOURIST PLACES
+                <svg class="h-5 w-5 text-yellow-500" fill="currentColor" viewbox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd"
+                        d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"
+                        fill-rule="evenodd"></path>
+                </svg>
+            </h1>
+            <p class="text-xs italic text-gray-300 font-serif">Explore the Beauty of Dima Hasao</p>
+        </div>
+        <button class="p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+    </header>
+    <!-- END: Header -->
+    <!-- Border Pattern -->
+    <div class="h-2 w-full bg-cover bg-center"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcW7qAcEaPK8I3lnvZaO2YdT04l5BQhugevsKDSttWGrYF6dBojVH5BCx6B8L2-P8hYcBOfoFtXnLr7yOlMm2HHvLOahwmflGpKq5wxcgwGob_FKPwgpaRDHz6T6ckWjV0pF4zeqe7fkJpAY1fka0r273_rGU-oVlCjgv9Qwk0BgsqB6uFUHiawjjzLjKO9OS0bA3S-arAMgjc9-iv-qOq5RQSUumua87XdleCxcnGON3af07AHEIP');">
+    </div>
+    <!-- BEGIN: Main Content -->
+    <main class="bg-custom-light-beige mx-auto max-w-md w-full relative">
+        <!-- Hero Section -->
+        <div class="relative">
+            <img alt="I Love Dima Hasao Viewpoint" class="w-full h-64 object-cover object-center rounded-b-xl shadow-md"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB65o8Pxoy9vk0GEfzlmgagRDDH5vmoIHtlwW2yUvGRQW6pmdC66hW0wpw8b6mYbJo9pMDmOfnhKAC7kHmGV3YMtjTEPDTI-_0cWqpFN7Af75GKhEGGnmFpI51V5I3B1n2jQEL955u_oSFcCNcgtfvvLgjLHAZv0vZfHeY6B4Hl0-2ZndLeOnccCmnpKX-X0g2pQQr7t7OSebUNzomX_eWrNW_5hJUTWXek6xnrAk38zmG_1Pi04BdD" />
+            <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-bold shadow-sm">
+                1. I LOVE DIMA HASAO
+            </div>
+        </div>
+        <div class="px-4 py-6 space-y-6">
+            <!-- Gallery Thumbnails -->
+            <div class="flex gap-2 overflow-x-auto pb-2 hide-scrollbar">
+                <img alt="Gallery image 1"
+                    class="w-20 h-20 rounded-lg object-cover flex-shrink-0 border-2 border-white shadow-sm"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOIy33K6HgCYitmbZ0VU0ymObFtBm5hFJsQBgkGSJ1ZRi_65fm62F7h4Uns22U6XIitLBmySu8s-86I294LEYgjaqUjm7IJzIISXNngpHmVYBYbL1PBsV2rTDYQpw72vACKUeYU0UUA0YWRWZEOYFNhBWAYe23cO5WpuIORbM-Z7_kH-__cvnHzgex8K7nHOEYPP3bRlQezqjRxTSLt-MnP7voTog-B9i73E7-D8i7cw8Yz66-Iizt" />
+                <img alt="Gallery image 2"
+                    class="w-20 h-20 rounded-lg object-cover flex-shrink-0 border-2 border-white shadow-sm"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuChuIPULSBosVofasDYW9AmGaz5ZV-qkilS4Nc-tALMfNlSHXae0imk8NdMAoDKSMTqwUWN2uFhUTKBSDJYE8Qq5MXBAoue_Z37ZtTns-ZduAexKKRJgYAFj7fLG14em1WUIrDZzkZV3m23Qy7JptrdM_fA8muEZNiyKeFE9DJsvi1o5YAuWWkYn4fmMMDX2o24GmQ9QdH4m2Is2kKT1HWo1FJ_yUUrils3B2nWOuxyiYAEGN9B6b5b" />
+                <img alt="Gallery image 3"
+                    class="w-20 h-20 rounded-lg object-cover flex-shrink-0 border-2 border-white shadow-sm"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsS00MSrPm0HYVOMLcku84z-0qVykOUIu0X83ZeZoKkddMRzFhaX0xewaGHvTub4o7leIiBstK8qEwdJ5kYkc6pX0WPSGhoRe-_kNeyLxo2q-Zf9BWwzPZtsJ3g0Mdmp1IY-MIq5ZICzgQbjNbwvyhUh2dJeq54QNhNvIoJJh25nINZcRsCMSkB7oyS9vJwibE1e94ENhEYtVatd3VCCJ9cSpAMCdbesOERK9_PvHLyqum_KMIpl7o" />
+                <img alt="Gallery image 4"
+                    class="w-20 h-20 rounded-lg object-cover flex-shrink-0 border-2 border-white shadow-sm"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGxDzlZ5RQUEgxmMC7cC35NHVDTUGdfOMucA9JqwYrGxAHXvz51uAlP1b189RsrQDSJwuleu9E-jfA7NX-sGCDZ37Mqov1eab6Z9R6dl0-PvT7ohUYmV5nLa3hvR8W-GKY_lCcH1Ua1gLpCe6ca2sHB57eW3vInSGeRlLZy865oSD7fsbAUzDbKpEL1UHSokVL8B4xNfknRYAUpjmgOPHu8WoyUjKDYv-seQk5-iI5xNzRsloXwJGB" />
+                <img alt="Gallery image 5"
+                    class="w-20 h-20 rounded-lg object-cover flex-shrink-0 border-2 border-white shadow-sm"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE0u3Aq8dWQPpE7NYjH12u3OZN6jnlUizbuJRSBiMVI1B-XvgALR-HIjajKG1OO76yN7v7q4Yb3z4Cw7UK0Kkrg9ajRsJvd4fvnxcgokmyUNupXPnGeRkZtxLPG82JE-qGd9oPUODT7dM-XCZxr8Oc2jp95vE2H75uMhsYGbas6WtxcOABa2tYdEbXS-TTEiQ_Q5t-ZTvEeiTo7-eW0Lnp5OzPdTTpQtoCCLDOi-BqmYf9KkC0UkZ3" />
+            </div>
+            <!-- About Section -->
+            <section class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold mb-2">About I Love Dima Hasao</h2>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                        The "I Love Dima Hasao" viewpoint is one of the most iconic and Instagrammable spots in the
+                        district. It offers a breathtaking panoramic view of the surrounding hills, lush valleys and the
+                        beautiful town of Haflong.
+                    </p>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        It is a symbol of pride and love for the people of Dima Hasao.
+                    </p>
+                </div>
+                <div class="flex-1 space-y-3 bg-orange-50/50 p-3 rounded-lg border border-orange-100/50">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-custom-red mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                            viewbox="0 0 24 24">
+                            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"></path>
+                        </svg>
+                        <div>
+                            <p class="text-xs font-semibold text-gray-900">Location</p>
+                            <p class="text-xs text-gray-600">Jatinga Road, Haflong<br />Dima Hasao, Assam</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-green-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                            viewbox="0 0 24 24">
+                            <path
+                                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                        <div>
+                            <p class="text-xs font-semibold text-gray-900">Best Time to Visit</p>
+                            <p class="text-xs text-gray-600">October to March</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-teal-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                            viewbox="0 0 24 24">
+                            <path
+                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"></path>
+                        </svg>
+                        <div>
+                            <p class="text-xs font-semibold text-gray-900">Ideal For</p>
+                            <p class="text-xs text-gray-600">Photography, Sightseeing,<br />Relaxation, Nature Walks</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- How to Reach -->
+            <section class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <h3 class="text-sm font-bold uppercase tracking-wide mb-4 text-gray-800">HOW TO REACH</h3>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <!-- Journey Points -->
+                    <div class="w-full md:w-1/3 relative border-l-2 border-dashed border-gray-300 ml-2 pl-4 py-1">
+                        <div class="absolute w-3 h-3 bg-blue-500 rounded-full -left-[7px] top-2"></div>
+                        <div class="mb-6">
+                            <p class="text-[10px] text-gray-500 font-semibold uppercase">From</p>
+                            <p class="text-sm font-medium">Haflong Station</p>
+                        </div>
+                        <div class="absolute w-3 h-3 text-red-500 -left-[7px] bottom-3 bg-white">
+                            <svg class="w-3 h-3" fill="currentColor" viewbox="0 0 20 20">
+                                <path clip-rule="evenodd"
+                                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                    fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-gray-500 font-semibold uppercase">To</p>
+                            <p class="text-sm font-medium">I Love Dima Hasao</p>
+                            <p class="text-[10px] text-gray-500">2.0 km away</p>
+                        </div>
+                    </div>
+                    <!-- Transport Options -->
+                    <div class="w-full md:w-2/3">
+                        <p class="text-[10px] font-semibold text-gray-500 mb-2">Transport Options</p>
+                        <div class="space-y-2">
+                            <!-- Bike -->
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-700">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                            <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"></path>
+                                        </svg> <!-- Placeholder for bike icon -->
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold">Bike</p>
+                                        <p class="text-[10px] text-gray-500">15 min (Approx.)</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] text-gray-500">MRP</p>
+                                    <p class="text-sm font-bold">₹100</p>
+                                </div>
+                                <button
+                                    class="bg-custom-dark-green text-white text-xs px-3 py-1.5 rounded-full hover:bg-green-800 transition-colors">Select</button>
+                            </div>
+                            <hr class="border-gray-100" />
+                            <!-- Auto -->
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-700">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                            <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                        </svg> <!-- Placeholder for auto icon -->
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold">Auto</p>
+                                        <p class="text-[10px] text-gray-500">15 min (Approx.)</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] text-gray-500">MRP</p>
+                                    <p class="text-sm font-bold">₹150</p>
+                                </div>
+                                <button
+                                    class="bg-custom-dark-green text-white text-xs px-3 py-1.5 rounded-full hover:bg-green-800 transition-colors">Select</button>
+                            </div>
+                            <hr class="border-gray-100" />
+                            <!-- Cab -->
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                            <path
+                                                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                        </svg> <!-- Placeholder for cab icon -->
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold">Cab</p>
+                                        <p class="text-[10px] text-gray-500">15 min (Approx.)</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] text-gray-500">MRP</p>
+                                    <p class="text-sm font-bold">₹220</p>
+                                </div>
+                                <button
+                                    class="bg-custom-dark-green text-white text-xs px-3 py-1.5 rounded-full hover:bg-green-800 transition-colors">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Map Thumbnail -->
+                    <div class="w-full md:w-1/3 flex flex-col items-center justify-center pt-2 md:pt-0">
+                        <div class="relative w-full h-32 bg-gray-200 rounded-lg overflow-hidden border border-gray-200">
+                            <img alt="Map Route" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4zhn3tIUeHxlu9zJN7wWvmeZ5tXI7TUZcnw8SXHepTdDqFJGXsqF8mGwORduEBWePjXmYiEtDU5Zdb79UsrfNSjZ-O5ynnCTqYhRac4VIe80rX2if6KULUUKpdwkxdLDu0UwKqJtqghq0Brcke8zaAOUj3w1EBrQukVFsdwj_lVniRlZos7j5Fyw2QzPLfcDbOWYcQfwDdonzn7JOgMXetKordEiSYoCeCi1-MdHUXMqPxMY-6MPY" />
+                        </div>
+                        <button class="text-xs text-blue-600 font-medium mt-2 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                            View Route
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- Grid for Hotels & Restaurants -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Recommended Hotels -->
+                <section class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-[11px] font-bold uppercase tracking-wide text-gray-800">RECOMMENDED HOTELS</h3>
+                        <a class="text-[10px] text-blue-600 font-medium hover:underline" href="#">View All &gt;</a>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- Hotel 1 -->
+                        <div class="flex gap-3">
+                            <img alt="Hill View Residency" class="w-16 h-12 rounded object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkWr5x7SXBRPhDOgS30tMPoWSbrxRT0SG3cfZbN4d7LV15imMcRzOzWnvTQLJUsFip2NYhV1MfBEc2qYd93-SXXueGTjVxqgwsjs5QAbVFi0_pjMyDZzWELgU3fBBtnA1HPTjogQPeZof86iZIkXzi7T7mHI5E8M889YmiLMjdx9iZ2sC3S4UkLsGSG2vvj4ZfwSfrci-YW-nbqouCZx911rsGQln66vevcrFn6DBMNEkockWlNQZD" />
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold">Hill View Residency</h4>
+                                <div class="flex text-yellow-400 text-[8px] my-0.5">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[9px] text-gray-500">1.2 km from I Love Dima Hasao</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold">₹1,800</p>
+                                <p class="text-[9px] text-gray-500">/night</p>
+                            </div>
+                        </div>
+                        <!-- Hotel 2 -->
+                        <div class="flex gap-3">
+                            <img alt="Dima Valley Hotel" class="w-16 h-12 rounded object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8scJwK7yOnzQeHMwSQOmDSxL9DDab8Njzi-hi-eJr5RHpf3BQdQg755OIFXb2HW4zEOVhI_Ip8eUXMEpZk_SJEzuZLvtP6HPUqfqhATZlT0_WBdi9UJ9AwiM8UAF4kO4W4YYwpWJjRcM_s50NupIp_Q6T_iC4HNVVoRhmysaNfoXviR4EjIm9e6CqdMDOEcAltpR9IZ5NPoysRKePv_DflAI2orhSnJXlYJYRPDQVH1_bcCUgAR8y" />
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold">Dima Valley Hotel</h4>
+                                <div class="flex text-yellow-400 text-[8px] my-0.5">
+                                    ★★★★☆
+                                </div>
+                                <p class="text-[9px] text-gray-500">1.5 km from I Love Dima Hasao</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold">₹2,300</p>
+                                <p class="text-[9px] text-gray-500">/night</p>
+                            </div>
+                        </div>
+                        <!-- Hotel 3 -->
+                        <div class="flex gap-3">
+                            <img alt="Green Hills Lodge" class="w-16 h-12 rounded object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA0aZICkzWbt5nYm0fE02MQnmrNaNMTkbU73V1mR6oifzG5dHyku_oxL45yjzbkj95JvWr1Sp-v8KPVmX6CiO8B4fwqTudwnJ3sLekBk1VwU7gR8COjYNyu_rUJdIjwTXBDQXnpHu0qSbZ-ldl_EReoxc7CVVc-mq8RYnGCdugBtcUM-bpVWaaI6DJn-4zJFTxxmZaU-wsQhcMpDMI8HirfkL9H4tHQIfM1Oox_175icB7m7bISlw4" />
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold">Green Hills Lodge</h4>
+                                <div class="flex text-yellow-400 text-[8px] my-0.5">
+                                    ★★★★☆
+                                </div>
+                                <p class="text-[9px] text-gray-500">1.8 km from I Love Dima Hasao</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold">₹1,400</p>
+                                <p class="text-[9px] text-gray-500">/night</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Recommended Restaurants -->
+                <section class="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-[11px] font-bold uppercase tracking-wide text-gray-800">RECOMMENDED RESTAURANTS
+                        </h3>
+                        <a class="text-[10px] text-blue-600 font-medium hover:underline" href="#">View All &gt;</a>
+                    </div>
+                    <div class="space-y-3">
+                        <!-- Restaurant 1 -->
+                        <div class="flex gap-3">
+                            <img alt="The Heritage Cafe" class="w-16 h-12 rounded object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhg5K8Sdy58-qUZatnH8dPtbyheqUE-p9j8qU_2jhmx8snbfrkBX2aC05vwMQ_iF-xRk1t1BWZy0MfN3l_a3FlEywSMSJvRRYQjH_e69VU2VP-XJPAhk8VT2mr80ovkSJxxJK1IcgG6CumIUTTbnCcsSUW3t_i0esoA54M2najWECMPFAlwwq1INKK66-GFNRLOg11cNq8sDkOw2Qvj5Rp-rDiPIQrN2xeIM7h9U8gOcri_FW-cTZl" />
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold">The Heritage Cafe</h4>
+                                <div class="flex text-yellow-400 text-[8px] my-0.5">
+                                    ★★★★★
+                                </div>
+                                <p class="text-[9px] text-gray-500">1.0 km from I Love Dima Hasao</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold">₹400</p>
+                                <p class="text-[9px] text-gray-500">for two</p>
+                            </div>
+                        </div>
+                        <!-- Restaurant 2 -->
+                        <div class="flex gap-3">
+                            <img alt="Dima Kitchen" class="w-16 h-12 rounded object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-2Ist4IIIoDiASv-Pc7edxizDJ9QKm0sb6AfkfAkXmNgNbCNXy6PVqVRjmni0n9iEMuW1yG1xYRh3vrbefExdZijQmuC1ILl6DNW_ZKKwP0MKCzO6wgZDyNFEApSirtPFtuLnqeIWzeBhk3fQxt0IHO_rPxvXwuKGdf_iKxM_0yuN2yrSn2Umy1egpqWjGuaSl4J7bb51Vgc3agAEEh1twcA3IBjkHq-yI7rDLXSLmN_m8p1pNn88" />
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold">Dima Kitchen</h4>
+                                <div class="flex text-yellow-400 text-[8px] my-0.5">
+                                    ★★★★☆
+                                </div>
+                                <p class="text-[9px] text-gray-500">1.3 km from I Love Dima Hasao</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold">₹350</p>
+                                <p class="text-[9px] text-gray-500">for two</p>
+                            </div>
+                        </div>
+                        <!-- Restaurant 3 -->
+                        <div class="flex gap-3">
+                            <img alt="Valley Bites" class="w-16 h-12 rounded object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHk7jSHLjb9erMs13rlh_C3q5Xd2uYTMTifr_ozYvAscgeQXiSrsQ1HrLKMigZXgjBYTR7q-xJAZZTaJqjZswUPGdX32_hxoKfIr9GRruH46G5l6895mK3ChPlq4_JU7OmxuSpxmoKZEj_15GpF6tEnDQZmeRK4vYlhcZfPrhV5yr6mBMYNPgdHLJDmuTewRoTgqWqA3kvlYNc0dPd9WaSoUMmqJSNkSX7UZOHh7YAky-2rX6gMJ8r" />
+                            <div class="flex-1">
+                                <h4 class="text-xs font-bold">Valley Bites</h4>
+                                <div class="flex text-yellow-400 text-[8px] my-0.5">
+                                    ★★★★☆
+                                </div>
+                                <p class="text-[9px] text-gray-500">1.6 km from I Love Dima Hasao</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-bold">₹300</p>
+                                <p class="text-[9px] text-gray-500">for two</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Local Guide -->
+            <section class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <h3 class="text-lg font-bold mb-4 text-gray-800">Local Guide</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor"
+                                viewbox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Keep the place clean and green. Do not litter.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor"
+                                viewbox="0 0 24 24">
+                                <path
+                                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Best view during sunrise and sunset.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor"
+                                viewbox="0 0 24 24">
+                                <path
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Respect local culture and traditions.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor"
+                                viewbox="0 0 24 24">
+                                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Wear comfortable shoes for walking.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor"
+                                viewbox="0 0 24 24">
+                                <path
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Stay safe and avoid risky areas.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor"
+                                viewbox="0 0 24 24">
+                                <path
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                            </svg>
+                            <span class="text-sm text-gray-700">Carry water and stay hydrated.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex-1 mt-4 md:mt-0">
+                    <img alt="Sunset View" class="w-full h-40 object-cover rounded-lg shadow-sm mb-2"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLiTZaIUBvDHzCvMQi92-QeTdbFMfmFUKb8CSV4iwdsuLI1u3jMBGTmWUFLKXe5k148fhDW7MkXmgHPaqdey6ooS3mmUS3DyDR7f-i6douVIjNC8hefvbK5Wyi3wLh0-vJfjsO6JdUQB_RhtGvHrdpeiiyoniIRzf7ru7gKj1ly2RK6tMd0eZlq2Zaul4-Q8eB5J1fgrtDPJN82hTQZAEEQbfT2Ce_Tz0GBePGlwh0H9MG6q-fnTN7" />
+                    <p class="text-center text-xs text-gray-600 font-medium">Enjoy the view, Respect the
+                        nature<br /><span class="font-bold text-sm text-gray-800">Love Dima Hasao!</span></p>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- END: Main Content -->
+    <!-- BEGIN: Footer -->
+    <footer
+        class="bg-custom-dark-green text-white py-4 text-center sticky bottom-0 z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <p class="text-sm font-serif italic text-yellow-500">Plan your trip, stay safe and<br />enjoy the beauty of Dima
+            Hasao!</p>
+    </footer>
+    <!-- END: Footer -->
+</body>
+
+</html>
+
+<!-- Ride Booking Screen -->
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ride Booking Screen</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style data-purpose="custom-fonts">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FAF6ED;
+        }
+
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-green': '#1B4D2E',
+                        'secondary-green': '#4A7C59',
+                        'accent-orange': '#F59E0B',
+                        'bg-light': '#FAF6ED',
+                        'card-bg': '#F1EBD7',
+                        'border-color': '#E5DDC3',
+                        'text-dark': '#2D3748',
+                        'text-muted': '#718096'
+                    },
+                    boxShadow: {
+                        'custom': '0 2px 10px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-text-dark antialiased max-w-md mx-auto relative pb-24">
+    <!-- BEGIN: Header Section -->
+    <header class="bg-primary-green text-white sticky top-0 z-50">
+        <div class="px-4 py-3 flex items-center justify-between">
+            <button class="p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+            <div class="text-center">
+                <h1 class="font-bold text-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-leaf text-accent-orange text-sm"></i>
+                    I LOVE DIMA HASAO
+                    <i class="fa-solid fa-leaf text-accent-orange text-sm"></i>
+                </h1>
+                <p class="font-playfair text-sm text-gray-200">Haflong Station to I Love Dima Hasao</p>
+            </div>
+            <button class="p-2"><i class="fa-regular fa-heart text-xl"></i></button>
+        </div>
+        <!-- Decorative Border -->
+        <div class="h-4 w-full"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATHjeesOsLPQY1ZJsuj1f6xM4T98ifEgybjedMBXnOl5eF9KNavfsCQJnQPrBr9IC3Nw7BUI_kpFCE1MQ_kTv-GsAh72ZTeAtpQ1CWQNNPFbx21vq8fy3cd46J3q_-8GhThIgbqcBnLuIcuxRv7PTAxX0peGxpElyMrkAW1bkN9t2Xk9sHL4Nvm6MjRzb6uhejLnY--d6DDzHxq0gQMAKt9k7p730tgoS5RDOqfWMhU4kE686YXZB-'); background-size: contain; background-repeat: repeat-x;">
+        </div>
+    </header>
+    <!-- END: Header Section -->
+    <main class="p-4 space-y-6">
+        <!-- BEGIN: Destination Info Section -->
+        <section class="flex gap-4">
+            <!-- Image Card -->
+            <div class="relative w-1/2 rounded-2xl overflow-hidden shadow-custom h-48">
+                <img alt="Destination View" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJw7Cx8YvDnvXlT3lI0b4q2KF-LHp3gPF8p7NoTdAwPg9lope4sjgnYB2-ekZzuGkvn4nxx-GuKOO4HQ4-j_U0bExmPEBUUmhHSFDfPyOVoGnJTVEmnQTR3mcO2OzNzRD-oF6RPA5r6dwOJa87_F-tPF87MleSQ3qFmtJNGGmECxGK2Po81u9cf1inmPHRqn-XCl-WQfR_ObL6zf82C2t5_XkeytzolmzMuvY-snRdjn7EC25YH9jvn5xQFcq-7uOydw" />
+                <!-- Location Overlay -->
+                <div
+                    class="absolute bottom-2 left-2 right-2 bg-primary-green/90 text-white p-2 rounded-xl text-xs backdrop-blur-sm border border-white/20 shadow-lg">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i class="fa-solid fa-circle-info text-lg"></i>
+                        <div>
+                            <p class="opacity-80 leading-tight">You are at:</p>
+                            <p class="font-semibold text-sm leading-tight">Haflong Station</p>
+                        </div>
+                    </div>
+                    <button class="text-accent-orange font-medium mt-1 w-full text-left pl-6">Change Location
+                        &gt;</button>
+                </div>
+            </div>
+            <!-- Details Card -->
+            <div class="w-1/2 space-y-3">
+                <div class="bg-white rounded-2xl p-4 shadow-custom border border-border-color">
+                    <div class="flex items-start gap-2 mb-2">
+                        <i class="fa-solid fa-location-dot text-red-500 mt-1 text-lg"></i>
+                        <div>
+                            <h2 class="font-bold text-gray-800 leading-tight">I LOVE DIMA HASAO</h2>
+                            <p class="text-xs text-text-muted mt-1 leading-snug">Jatinga Road, Haflong<br />Dima Hasao,
+                                Assam</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-card-bg rounded-2xl p-3 shadow-custom flex justify-between border border-border-color text-center h-24">
+                    <div class="flex flex-col items-center justify-center w-1/3 border-r border-border-color/50">
+                        <i class="fa-solid fa-route text-primary-green mb-1 text-lg"></i>
+                        <span class="text-[10px] text-text-muted font-medium">Distance</span>
+                        <span class="font-bold text-sm">2.0 km</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center w-1/3 border-r border-border-color/50 px-1">
+                        <i class="fa-regular fa-clock text-primary-green mb-1 text-lg"></i>
+                        <span class="text-[10px] text-text-muted font-medium leading-tight">Travel Time</span>
+                        <span class="font-bold text-sm leading-tight mt-1">15 min<br /><span
+                                class="font-normal text-[10px]">(Approx.)</span></span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center w-1/3">
+                        <i class="fa-solid fa-mountain-sun text-primary-green mb-1 text-lg"></i>
+                        <span class="text-[10px] text-text-muted font-medium leading-tight">Best Time</span>
+                        <span class="text-[9px] font-semibold text-center leading-tight mt-1">Sunrise &amp;
+                            Sunset<br /><span class="font-normal">(All year)</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Destination Info Section -->
+        <!-- BEGIN: Selected Transport Section -->
+        <section>
+            <h3 class="font-bold text-lg mb-3">Selected Transport</h3>
+            <div
+                class="bg-card-bg rounded-2xl p-4 shadow-custom flex items-center justify-between border border-border-color">
+                <div class="flex items-center gap-4">
+                    <img alt="Auto Rickshaw" class="w-20 h-auto mix-blend-multiply"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx7ULlPCrXq_Qem7muMLMo9DZYuh6i-wtmss79OgYhwaIVoRxEYq4ZPyJ2br_2e3q5260w_U1xl-blm57MhEQ1aAiE9hi6fUIBOTaVqbWTj1JsvdyTBh_tXKyI_xE6wG7hTr8uLXU0coc8Axk90wXBRUNL5O6E8Yvxp8UKjX0yrZGAxN5w5ZWZkCEpIZUoRfJSRW5tZ2lQiqwZtm3oBc3i13F2p7XDPf7Z5JF7P5ba1aUTjJu2rEaV" />
+                    <div>
+                        <h4 class="font-bold text-xl text-primary-green mb-1">Auto</h4>
+                        <div class="flex items-center gap-4 text-sm font-medium">
+                            <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-text-muted"></i> 15
+                                min <span class="text-xs font-normal text-text-muted">(Approx.)</span></span>
+                            <span class="flex items-center gap-1"><i
+                                    class="fa-solid fa-indian-rupee-sign text-text-muted"></i> MRP <span
+                                    class="text-lg font-bold">₹150</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-secondary-green text-white px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1">
+                    SELECTED <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+        </section>
+        <!-- END: Selected Transport Section -->
+        <!-- BEGIN: Route Overview Section -->
+        <section>
+            <h3 class="font-bold text-lg mb-3">Route Overview</h3>
+            <div
+                class="relative bg-white rounded-2xl p-2 shadow-custom border border-border-color overflow-hidden h-64">
+                <img alt="Map Route" class="w-full h-full object-cover rounded-xl"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5j2IwgOANlRiyn4G-hWEa6kjfN3Bn8ZxOnm5zSqkvFdxXc4Si5_qPH8LuqmV5sbPUfJPUQVEOEj-VastKPFBIYnqXBBmcczt5EREh9Z0ZsC7qwUZtaB3Ext24tsatrfOe_-czcyVoigKY-FK-Cf7egZF28huoOGqPFu2QtbnWDLUoZLXFHrkEKeam6fVRoRuB_7mpglvWs_IdcDdqWcSPNe0vqnUD62WijysL39vzeqL6upcRm28V" />
+                <!-- Map Overlay Elements (Simulated) -->
+                <div
+                    class="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                    <span class="bg-white px-2 py-1 rounded text-xs font-semibold shadow mb-1">Haflong Station</span>
+                    <div class="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow"></div>
+                </div>
+                <div
+                    class="absolute top-1/3 right-1/4 transform translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                    <span class="bg-white px-2 py-1 rounded text-xs font-semibold shadow mb-1 whitespace-nowrap">I Love
+                        Dima Hasao</span>
+                    <i class="fa-solid fa-location-dot text-red-500 text-2xl drop-shadow-md"></i>
+                </div>
+                <!-- Route Info Tooltip -->
+                <div
+                    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-3 py-1.5 rounded-full shadow-md text-xs font-semibold flex items-center gap-2 border border-gray-100">
+                    <i class="fa-solid fa-car-side text-gray-500"></i>
+                    <div>
+                        <span>2.0 km</span><br />
+                        <span class="text-[10px] text-gray-500 font-normal">15 min (Approx.)</span>
+                    </div>
+                </div>
+                <!-- View Map Button -->
+                <button
+                    class="absolute bottom-4 right-4 bg-white px-4 py-2 rounded-lg shadow-md font-semibold text-sm flex items-center gap-2 border border-gray-200">
+                    <i class="fa-solid fa-map"></i> View in Maps
+                </button>
+            </div>
+        </section>
+        <!-- END: Route Overview Section -->
+        <!-- BEGIN: Ride Summary & Payment Section -->
+        <section>
+            <h3 class="font-bold text-lg mb-3">Ride Summary</h3>
+            <div class="flex gap-4">
+                <!-- Details List -->
+                <div class="w-1/2 bg-card-bg rounded-2xl p-4 shadow-custom border border-border-color text-sm">
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot w-6 text-primary-green mt-0.5"></i>
+                            <div>
+                                <span class="text-text-muted block text-xs">From</span>
+                                <span class="font-medium">Haflong Station</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot w-6 text-primary-green mt-0.5"></i>
+                            <div>
+                                <span class="text-text-muted block text-xs">To</span>
+                                <span class="font-medium">I Love Dima Hasao</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-route w-6 text-text-muted text-xs"></i>
+                            <span class="text-text-muted w-20">Distance</span>
+                            <span class="font-medium">2.0 km</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-regular fa-clock w-6 text-text-muted text-xs"></i>
+                            <span class="text-text-muted w-20">Travel Time</span>
+                            <span class="font-medium">15 min <span
+                                    class="text-[10px] font-normal">(Approx.)</span></span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-car-side w-6 text-text-muted text-xs"></i>
+                            <span class="text-text-muted w-20">Transport</span>
+                            <span class="font-medium">Auto</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-indian-rupee-sign w-6 text-text-muted text-xs"></i>
+                            <span class="text-text-muted w-20">Fare (MRP)</span>
+                            <span class="font-bold">₹150</span>
+                        </li>
+                    </ul>
+                    <div
+                        class="mt-4 bg-[#E8F3ED] p-2 rounded-lg text-[10px] flex items-start gap-2 border border-[#C5E1D4]">
+                        <i class="fa-solid fa-shield-halved text-secondary-green mt-0.5"></i>
+                        <ul class="list-disc pl-2 grid grid-cols-2 gap-x-2 text-secondary-green font-medium">
+                            <li>Safe &amp; Reliable</li>
+                            <li>Verified Drivers</li>
+                            <li>Clean Vehicles</li>
+                            <li>Best Prices</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Fare & Payment -->
+                <div
+                    class="w-1/2 bg-card-bg rounded-2xl p-4 shadow-custom border border-border-color flex flex-col justify-between">
+                    <div class="text-center pb-4 border-b border-border-color/50">
+                        <p class="text-sm font-medium">Total Fare (MRP)</p>
+                        <p class="text-3xl font-bold text-primary-green mt-1">₹150</p>
+                    </div>
+                    <div class="pt-3">
+                        <p class="text-xs font-semibold mb-3">Payment Options</p>
+                        <div class="flex justify-between px-1 mb-4">
+                            <div class="flex flex-col items-center gap-1 text-primary-green opacity-50">
+                                <i class="fa-solid fa-angles-right text-xl"></i>
+                                <span class="text-[10px] font-medium">UPI</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 text-primary-green opacity-50">
+                                <i class="fa-regular fa-credit-card text-xl"></i>
+                                <span class="text-[10px] font-medium">Card</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 text-primary-green opacity-50">
+                                <i class="fa-solid fa-wallet text-xl"></i>
+                                <span class="text-[10px] font-medium">Wallet</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1 text-primary-green">
+                                <i class="fa-solid fa-money-bill-1 text-xl"></i>
+                                <span class="text-[10px] font-bold">Cash</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full bg-primary-green text-white font-semibold py-3 rounded-xl shadow-md text-sm hover:bg-opacity-90 transition-colors">
+                            Book Auto Now
+                        </button>
+                        <p
+                            class="text-center text-[10px] text-primary-green mt-2 flex items-center justify-center gap-1 font-medium">
+                            <i class="fa-solid fa-lock"></i> Secure &amp; Easy Booking
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Ride Summary & Payment Section -->
+        <!-- BEGIN: Travel Tips Section -->
+        <section class="bg-card-bg rounded-2xl p-4 shadow-custom border border-border-color">
+            <h3 class="font-bold text-lg mb-4">Travel Tips</h3>
+            <div class="grid grid-cols-2 gap-y-4 gap-x-2 text-xs">
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-sun text-accent-orange text-lg w-5 text-center"></i>
+                    <p class="leading-tight text-gray-700">Reach early for the best sunrise or sunset views.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-leaf text-secondary-green text-lg w-5 text-center"></i>
+                    <p class="leading-tight text-gray-700">Keep the place clean and green.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-users text-primary-green text-lg w-5 text-center"></i>
+                    <p class="leading-tight text-gray-700">Respect local culture and traditions.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-bottle-water text-blue-500 text-lg w-5 text-center"></i>
+                    <p class="leading-tight text-gray-700">Carry water and stay hydrated.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-shoe-prints text-gray-600 text-lg w-5 text-center"></i>
+                    <p class="leading-tight text-gray-700">Wear comfortable shoes for walking.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                    <i class="fa-solid fa-trash-can text-secondary-green text-lg w-5 text-center"></i>
+                    <p class="leading-tight text-gray-700">Avoid littering and noisy behavior.</p>
+                </div>
+            </div>
+        </section>
+        <!-- END: Travel Tips Section -->
+    </main>
+    <!-- BEGIN: Bottom Fixed Bar -->
+    <div
+        class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-primary-green text-white pb-safe border-t-4 border-accent-orange">
+        <div class="flex items-center justify-between p-3">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 border border-white/30 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-car-side text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold opacity-90">Auto Selected</p>
+                    <p class="text-lg font-bold flex items-center gap-1">MRP ₹150</p>
+                </div>
+            </div>
+            <button
+                class="bg-accent-orange text-black font-bold py-3 px-6 rounded-xl flex items-center gap-2 hover:bg-opacity-90 transition-colors shadow-lg">
+                Confirm &amp; Book Ride <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        <div
+            class="bg-[#133a21] text-center py-2 text-xs font-medium text-[#a3c9b1] flex justify-center items-center gap-2">
+            <i class="fa-solid fa-leaf text-accent-orange opacity-80"></i>
+            Enjoy a safe and memorable journey!
+            <i class="fa-solid fa-leaf text-accent-orange opacity-80"></i>
+        </div>
+    </div>
+    <!-- END: Bottom Fixed Bar -->
+</body>
+
+</html>
