@@ -12,35 +12,35 @@ export const QuickLinksGrid = () => {
       label: 'Local Guide',
       icon: 'fa-solid fa-user-tie',
       color: 'text-white',
-      bg: 'bg-[#10B981]' // Green circle
+      bg: 'bg-[#10B981]'
     },
     {
       id: 'events',
       label: 'Events &\nFestivals',
       icon: 'fa-solid fa-calendar-days',
       color: 'text-white',
-      bg: 'bg-[#F97316]' // Orange circle
+      bg: 'bg-[#F97316]'
     },
     {
       id: 'packages',
       label: 'Travel\nPackages',
       icon: 'fa-solid fa-suitcase-rolling',
       color: 'text-white',
-      bg: 'bg-[#3B82F6]' // Blue circle
+      bg: 'bg-[#3B82F6]'
     },
     {
       id: 'food',
       label: 'Food &\nCuisine',
       icon: 'fa-solid fa-bowl-food',
       color: 'text-white',
-      bg: 'bg-[#F43F5E]' // Rose / pink-red circle
+      bg: 'bg-[#F43F5E]'
     },
     {
       id: 'emergency',
       label: 'Emergency\nHelp',
       icon: 'fa-solid fa-phone-volume',
       color: 'text-white',
-      bg: 'bg-[#EF4444]' // Red circle
+      bg: 'bg-[#EF4444]'
     }
   ];
 
@@ -82,7 +82,7 @@ export const QuickLinksGrid = () => {
 
   return (
     <>
-      <div className="bg-white rounded-2xl shadow-xs border border-gray-100/90 py-2.5 px-2 mx-3" data-purpose="quick-links">
+      <div className="bg-white rounded-2xl shadow-xs border border-gray-100/90 py-1.5 px-2 mx-2.5" data-purpose="quick-links">
         <div className="grid grid-cols-5 gap-1">
           {links.map((item, index) => (
             <motion.button
@@ -93,10 +93,10 @@ export const QuickLinksGrid = () => {
                 index > 0 ? 'border-l border-gray-100 pl-1' : ''
               }`}
             >
-              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${item.bg} flex items-center justify-center ${item.color} shadow-xs`}>
-                <i className={`${item.icon} text-xs sm:text-sm`}></i>
+              <div className={`w-7 h-7 rounded-full ${item.bg} flex items-center justify-center ${item.color} shadow-xs`}>
+                <i className={`${item.icon} text-[11px]`}></i>
               </div>
-              <span className="text-[8.5px] sm:text-[9px] font-semibold text-center leading-tight text-gray-800 whitespace-pre-line mt-1">
+              <span className="text-[7.5px] font-semibold text-center leading-tight text-gray-800 whitespace-pre-line mt-0.5">
                 {item.label}
               </span>
             </motion.button>

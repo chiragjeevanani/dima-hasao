@@ -7,29 +7,29 @@ export const WhyVisitGrid = () => {
 
   return (
     <>
-      <div className="bg-[#fcf8ed] rounded-2xl p-2.5 shadow-xs border border-orange-200/60 mx-3 mb-24" data-purpose="why-visit">
-        <h3 className="text-center font-bold text-gray-900 mb-2 text-[11px] sm:text-xs">
+      <div className="bg-[#fcf8ed] rounded-2xl p-2 shadow-xs border border-orange-200/60 mx-2.5 mb-16" data-purpose="why-visit">
+        <h3 className="text-center font-bold text-gray-900 mb-1 text-[10.5px]">
           Why Visit Dima Hasao?
         </h3>
 
-        <div className="grid grid-cols-4 gap-1">
+        <div className="grid grid-cols-4 gap-0.5">
           {WHY_VISIT_DATA.map((item, index) => (
             <motion.div
               key={item.id}
               whileTap={{ scale: 0.93 }}
               onClick={() => setSelectedHighlight(item)}
-              className={`flex flex-col items-center text-center p-1 rounded-xl hover:bg-orange-100/50 transition-colors cursor-pointer ${
-                index > 0 ? 'border-l border-orange-200/80 pl-1' : ''
+              className={`flex flex-col items-center text-center p-0.5 rounded-xl hover:bg-orange-100/50 transition-colors cursor-pointer ${
+                index > 0 ? 'border-l border-orange-200/80 pl-0.5' : ''
               }`}
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 mb-1 flex items-center justify-center">
+              <div className="w-8 h-8 mb-0.5 flex items-center justify-center">
                 <img
                   alt={item.title}
-                  className="h-8 sm:h-9 object-contain drop-shadow-xs"
+                  className="h-7 object-contain drop-shadow-xs"
                   src={item.image}
                 />
               </div>
-              <span className="text-[8px] sm:text-[8.5px] font-bold text-gray-800 leading-tight">
+              <span className="text-[7.5px] font-bold text-gray-800 leading-tight">
                 {item.title}
               </span>
             </motion.div>
