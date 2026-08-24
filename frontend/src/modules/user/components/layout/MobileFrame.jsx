@@ -6,11 +6,11 @@ export const MobileFrame = ({ children }) => {
   const { toastMessage } = useBooking();
 
   return (
-    <div className="min-h-dvh w-full bg-[#f4ede2] flex justify-center selection:bg-amber-400 selection:text-black">
-      {/* Main Responsive Mobile View Container without simulated phone frames/bezels */}
-      <div className="w-full max-w-[430px] min-h-dvh flex flex-col relative bg-[#fdfbf7] shadow-sm">
-        {/* Main Content Area */}
-        <div className="flex-1 w-full flex flex-col relative bg-[#fdfbf7]">
+    <div className="fixed inset-0 w-full h-full overflow-hidden overscroll-none flex justify-center bg-[#fdfbf7] select-none touch-manipulation">
+      {/* Main Responsive Mobile View Container */}
+      <div className="w-full max-w-[430px] h-full flex flex-col relative bg-[#fdfbf7] overflow-hidden overscroll-none shadow-sm">
+        {/* Scrollable Viewport with overscroll bounce disabled */}
+        <div className="flex-1 w-full overflow-y-auto overscroll-none hide-scrollbar flex flex-col relative bg-[#fdfbf7]">
           {children}
         </div>
 
