@@ -18,6 +18,22 @@ export const MoreScreen = () => {
       path: '/places'
     },
     {
+      title: 'Hotels & Homestays',
+      desc: 'Scenic resorts, traditional cottages & lodges',
+      icon: 'fa-solid fa-hotel',
+      color: 'text-purple-600',
+      bg: 'bg-purple-50',
+      path: '/hotels'
+    },
+    {
+      title: 'Food & Dining Delivery',
+      desc: 'Authentic Dimasa smoked delicacies & cafes',
+      icon: 'fa-solid fa-utensils',
+      color: 'text-rose-600',
+      bg: 'bg-rose-50',
+      path: '/food'
+    },
+    {
       title: 'Taxi & Auto Booking',
       desc: 'Verified drivers, fixed MRP & instant confirmation',
       icon: 'fa-solid fa-taxi',
@@ -26,20 +42,36 @@ export const MoreScreen = () => {
       path: '/book-ride'
     },
     {
-      title: 'My Bookings',
-      desc: 'Active ride tracking, driver contacts & OTPs',
-      icon: 'fa-regular fa-calendar-check',
-      color: 'text-blue-600',
-      bg: 'bg-blue-50',
-      path: '/bookings'
+      title: 'Tour & Trek Packages',
+      desc: 'All-inclusive guided expeditions & camps',
+      icon: 'fa-solid fa-suitcase-rolling',
+      color: 'text-teal-600',
+      bg: 'bg-teal-50',
+      path: '/packages'
     },
     {
-      title: 'Tourist Profile & Wishlist',
-      desc: 'Saved spots, preferences & account settings',
-      icon: 'fa-regular fa-circle-user',
-      color: 'text-purple-600',
-      bg: 'bg-purple-50',
-      path: '/profile'
+      title: 'Falcon Festival & Events',
+      desc: 'Official government passes & music gala',
+      icon: 'fa-solid fa-ticket',
+      color: 'text-orange-600',
+      bg: 'bg-orange-50',
+      path: '/festivals'
+    },
+    {
+      title: 'Help & Support (SOS)',
+      desc: 'Emergency hotlines, ticket raising & FAQs',
+      icon: 'fa-solid fa-headset',
+      color: 'text-red-600',
+      bg: 'bg-red-50',
+      path: '/support'
+    },
+    {
+      title: 'Rate & Review',
+      desc: 'Share verified feedback for rides and stays',
+      icon: 'fa-solid fa-star',
+      color: 'text-yellow-600',
+      bg: 'bg-yellow-50',
+      path: '/review'
     }
   ];
 
@@ -49,28 +81,28 @@ export const MoreScreen = () => {
       desc: 'Expert local Dimasa eco-guides & trekking experts',
       icon: 'fa-solid fa-user-tie',
       color: 'text-green-600',
-      action: () => showToast('Connecting to Certified Dimasa Guides Desk')
+      action: () => showToast('Connecting to Certified Dimasa Guides Desk (+91 94350 12345)')
     },
     {
       title: 'Events & Falcon Festival',
-      desc: 'Annual wildlife festival & cultural celebrations',
+      desc: 'Annual wildlife festival & cultural passes',
       icon: 'fa-solid fa-calendar-days',
       color: 'text-orange-500',
-      action: () => showToast('Opening Falcon Festival & Busu Dima Schedule')
+      action: () => navigate('/festivals')
     },
     {
       title: 'Curated Tour Packages',
-      desc: '2-Day & 3-Day scenic nature and trekking packages',
+      desc: 'All-inclusive 2-Day & 3-Day scenic nature treks',
       icon: 'fa-solid fa-suitcase-rolling',
       color: 'text-teal-600',
-      action: () => showToast('Inquiring travel packages for Dima Hasao')
+      action: () => navigate('/packages')
     },
     {
       title: 'Authentic Dimasa Cuisine',
       desc: 'Judima rice brew, smoked meat & organic herbs',
       icon: 'fa-solid fa-utensils',
       color: 'text-red-500',
-      action: () => showToast('Showing top ethnic Dimasa eateries')
+      action: () => navigate('/food')
     }
   ];
 

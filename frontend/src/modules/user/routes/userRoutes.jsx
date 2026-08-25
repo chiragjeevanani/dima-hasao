@@ -7,6 +7,20 @@ import { HomeScreen } from '../pages/HomeScreen';
 import { TouristPlacesList } from '../pages/TouristPlacesList';
 import { TouristPlaceDetail } from '../pages/TouristPlaceDetail';
 import { RideBookingScreen } from '../pages/RideBookingScreen';
+import { HotelListScreen } from '../pages/HotelListScreen';
+import { HotelDetailScreen } from '../pages/HotelDetailScreen';
+import { HotelBookingScreen } from '../pages/HotelBookingScreen';
+import { RestaurantListScreen } from '../pages/RestaurantListScreen';
+import { RestaurantDetailScreen } from '../pages/RestaurantDetailScreen';
+import { CartScreen } from '../pages/CartScreen';
+import { OrderTrackingScreen } from '../pages/OrderTrackingScreen';
+import { TourPackageListScreen } from '../pages/TourPackageListScreen';
+import { TourPackageDetailScreen } from '../pages/TourPackageDetailScreen';
+import { TourBookingScreen } from '../pages/TourBookingScreen';
+import { FestivalListScreen } from '../pages/FestivalListScreen';
+import { FestivalDetailScreen } from '../pages/FestivalDetailScreen';
+import { HelpSupportScreen } from '../pages/HelpSupportScreen';
+import { RatingReviewScreen } from '../pages/RatingReviewScreen';
 import { MyBookingsScreen } from '../pages/MyBookingsScreen';
 import { ProfileScreen } from '../pages/ProfileScreen';
 import { MoreScreen } from '../pages/MoreScreen';
@@ -27,8 +41,23 @@ export const UserRoutes = () => {
   const location = useLocation();
   const { user } = useBooking();
 
-  // Hide bottom nav on login and booking screens
-  const showBottomNav = user.isLoggedIn && location.pathname !== '/login' && location.pathname !== '/book-ride';
+  // Hide bottom nav on any detail page (places, restaurants, hotels, packages, festivals),
+  // taxi ride booking, checkouts, live order tracking, support, review, and login.
+  const isDetailPageOrSubflow =
+    location.pathname === '/login' ||
+    location.pathname === '/book-ride' ||
+    location.pathname === '/support' ||
+    location.pathname === '/review' ||
+    location.pathname === '/food/cart' ||
+    location.pathname.startsWith('/food/orders') ||
+    location.pathname.endsWith('/book') ||
+    /^\/places\/[^/]+$/.test(location.pathname) ||
+    /^\/hotels\/[^/]+$/.test(location.pathname) ||
+    /^\/food\/[^/]+$/.test(location.pathname) ||
+    /^\/packages\/[^/]+$/.test(location.pathname) ||
+    /^\/festivals\/[^/]+$/.test(location.pathname);
+
+  const showBottomNav = user.isLoggedIn && !isDetailPageOrSubflow;
 
   return (
     <div className="w-full flex-1 flex flex-col relative">
@@ -88,6 +117,118 @@ export const UserRoutes = () => {
             element={
               <PageWrapper>
                 <RideBookingScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/hotels"
+            element={
+              <PageWrapper>
+                <HotelListScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/hotels/:id"
+            element={
+              <PageWrapper>
+                <HotelDetailScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/hotels/:id/book"
+            element={
+              <PageWrapper>
+                <HotelBookingScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/food"
+            element={
+              <PageWrapper>
+                <RestaurantListScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/food/:id"
+            element={
+              <PageWrapper>
+                <RestaurantDetailScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/food/cart"
+            element={
+              <PageWrapper>
+                <CartScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/food/orders/:id"
+            element={
+              <PageWrapper>
+                <OrderTrackingScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/packages"
+            element={
+              <PageWrapper>
+                <TourPackageListScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/packages/:id"
+            element={
+              <PageWrapper>
+                <TourPackageDetailScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/packages/:id/book"
+            element={
+              <PageWrapper>
+                <TourBookingScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/festivals"
+            element={
+              <PageWrapper>
+                <FestivalListScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/festivals/:id"
+            element={
+              <PageWrapper>
+                <FestivalDetailScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/support"
+            element={
+              <PageWrapper>
+                <HelpSupportScreen />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/review"
+            element={
+              <PageWrapper>
+                <RatingReviewScreen />
               </PageWrapper>
             }
           />

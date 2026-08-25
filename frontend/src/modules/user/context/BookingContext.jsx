@@ -18,8 +18,9 @@ export const BookingProvider = ({ children }) => {
 
   // Favorites
   const [favorites, setFavorites] = useState(['1']);
+  const [favoriteHotels, setFavoriteHotels] = useState(['h1']);
 
-  // Bookings list
+  // Taxi Bookings list
   const [bookings, setBookings] = useState([
     {
       id: 'DH-BK-8902',
@@ -36,6 +37,169 @@ export const BookingProvider = ({ children }) => {
       otp: '7412'
     }
   ]);
+
+  // Hotel Bookings list
+  const [hotelBookings, setHotelBookings] = useState([
+    {
+      id: 'DH-HTL-7741',
+      hotelId: 'h1',
+      hotelName: 'The Landmark Hills Resort & Spa',
+      roomName: 'Deluxe Valley View Room',
+      location: 'Upper Bagetar, Haflong',
+      checkIn: 'Tomorrow, 12:00 PM',
+      checkOut: 'Next Day, 11:00 AM',
+      nights: 1,
+      guests: '2 Adults',
+      roomCount: 1,
+      totalAmount: 4256,
+      paymentMethod: 'UPI (GPay)',
+      paymentStatus: 'Paid',
+      status: 'Confirmed',
+      bookingDate: 'Today, 2:15 PM',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+      guestName: 'Dima Explorer',
+      guestPhone: '+91 98765 43210'
+    }
+  ]);
+
+  // Food Ordering Cart State
+  const [cart, setCart] = useState([]);
+  const [cartRestaurant, setCartRestaurant] = useState(null);
+
+  // Food Orders History
+  const [foodOrders, setFoodOrders] = useState([
+    {
+      id: 'DH-FD-3109',
+      restaurantId: 'r1',
+      restaurantName: 'Dimasa Ethnic Kitchen & Judima Lounge',
+      items: [
+        { id: 'r1-m1', name: 'Muri Bamboo Smoked Pork', price: 320, quantity: 1 },
+        { id: 'r1-m2', name: 'Mai-ju Sticky Rice', price: 80, quantity: 2 }
+      ],
+      subtotal: 480,
+      deliveryFee: 40,
+      gst: 24,
+      totalAmount: 544,
+      deliveryAddress: 'Circuit House Road, Haflong',
+      status: 'Delivered',
+      orderTime: 'Yesterday, 8:15 PM',
+      deliveryPartner: 'Bijoy Dimasa',
+      partnerPhone: '+91 94352 77112',
+      estimatedTime: 'Delivered in 28 mins'
+    }
+  ]);
+
+  // Tour Package Bookings
+  const [tourBookings, setTourBookings] = useState([
+    {
+      id: 'DH-TOUR-1044',
+      packageId: 'pkg-1',
+      packageTitle: 'Haflong & Jatinga Bird Phenomenon Tour',
+      duration: '2 Days / 1 Night',
+      travelDate: 'Coming Weekend (Saturday)',
+      travelers: '2 Adults',
+      totalAmount: 8400,
+      paymentMethod: 'UPI (GPay)',
+      paymentStatus: 'Paid',
+      status: 'Confirmed',
+      guideAssigned: 'Sonjit Daulagupu (Certified Guide)',
+      guidePhone: '+91 94353 11889',
+      pickupPoint: 'Haflong Railway Station (Pickup at 9:00 AM)',
+      bookingDate: 'Yesterday, 4:00 PM',
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'
+    }
+  ]);
+
+  // Festival Ticket Bookings
+  const [festivalBookings, setFestivalBookings] = useState([
+    {
+      id: 'DH-FEST-9021',
+      festivalId: 'fest-1',
+      festivalName: 'Falcon Festival Umrangso 2026',
+      ticketCategory: '3-Day All-Access Season Pass',
+      ticketCount: 2,
+      totalAmount: 1300,
+      venue: 'Golf Field Grounds, Umrangso',
+      dates: 'Nov 14 - Nov 17, 2026',
+      status: 'Confirmed',
+      paymentStatus: 'Paid Online',
+      bookingDate: 'Yesterday, 6:30 PM',
+      qrCode: 'DH-FF-74129',
+      image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
+    }
+  ]);
+
+  // Cart Management Functions
+  const addToCart = (restaurant, item) => {
+    // If cart has items from another restaurant, reset cart
+    if (cartRestaurant && cartRestaurant.id !== restaurant.id) {
+      if (
+        !window.confirm(
+          `Your cart contains items from "${cartRestaurant.name}". Reset cart to add items from "${restaurant.name}"?`
+        )
+      ) {
+        return;
+      }
+      setCart([{ ...item, quantity: 1 }]);
+      setCartRestaurant({ id: restaurant.id, name: restaurant.name });
+      showToast(`Added ${item.name} to cart 🍲`);
+      return;
+    }
+
+    setCartRestaurant({ id: restaurant.id, name: restaurant.name });
+    setCart((prev) => {
+      const existing = prev.find((i) => i.id === item.id);
+      if (existing) {
+        return prev.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i));
+      }
+      return [...prev, { ...item, quantity: 1 }];
+    });
+    showToast(`Added ${item.name} to cart 🍲`);
+  };
+
+  const updateCartQuantity = (itemId, delta) => {
+    setCart((prev) => {
+      return prev
+        .map((i) => {
+          if (i.id === itemId) {
+            const newQty = i.quantity + delta;
+            return newQty > 0 ? { ...i, quantity: newQty } : null;
+          }
+          return i;
+        })
+        .filter(Boolean);
+    });
+  };
+
+  const removeFromCart = (itemId) => {
+    setCart((prev) => prev.filter((i) => i.id !== itemId));
+    showToast('Item removed from cart');
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    setCartRestaurant(null);
+  };
+
+  const createFoodOrder = (orderDetails) => {
+    const newId = `DH-FD-${Math.floor(1000 + Math.random() * 9000)}`;
+    const newOrder = {
+      id: newId,
+      restaurantId: cartRestaurant?.id || 'r1',
+      restaurantName: cartRestaurant?.name || 'Local Restaurant',
+      items: [...cart],
+      status: 'Placed',
+      orderTime: 'Just now',
+      deliveryPartner: 'Haflong Express Partner',
+      partnerPhone: '+91 94350 44221',
+      estimatedTime: '25-35 mins',
+      ...orderDetails
+    };
+
+    setFoodOrders((prev) => [newOrder, ...prev]);
+    clearCart();
+    return newOrder;
+  };
 
   // Search and Filter State
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,6 +222,15 @@ export const BookingProvider = ({ children }) => {
       const exists = prev.includes(placeId);
       const updated = exists ? prev.filter(id => id !== placeId) : [...prev, placeId];
       showToast(exists ? 'Removed from favorites' : 'Added to favorites ❤️');
+      return updated;
+    });
+  };
+
+  const toggleFavoriteHotel = (hotelId) => {
+    setFavoriteHotels(prev => {
+      const exists = prev.includes(hotelId);
+      const updated = exists ? prev.filter(id => id !== hotelId) : [...prev, hotelId];
+      showToast(exists ? 'Removed hotel from saved' : 'Saved hotel to wishlist ❤️');
       return updated;
     });
   };
@@ -97,6 +270,54 @@ export const BookingProvider = ({ children }) => {
     return newBooking;
   };
 
+  const createHotelBooking = (bookingDetails) => {
+    const newId = `DH-HTL-${Math.floor(1000 + Math.random() * 9000)}`;
+    const newHotelBooking = {
+      id: newId,
+      bookingDate: 'Just now',
+      status: 'Confirmed',
+      paymentStatus: bookingDetails.paymentMethod === 'cash' ? 'Pay at Property' : 'Paid Online',
+      createdAt: new Date().toISOString(),
+      ...bookingDetails
+    };
+
+    setHotelBookings(prev => [newHotelBooking, ...prev]);
+    return newHotelBooking;
+  };
+
+  const createTourBooking = (bookingDetails) => {
+    const newId = `DH-TOUR-${Math.floor(1000 + Math.random() * 9000)}`;
+    const newTourBooking = {
+      id: newId,
+      bookingDate: 'Just now',
+      status: 'Confirmed',
+      paymentStatus: 'Paid Online',
+      guideAssigned: 'Local Certified Dimasa Guide (Assigned)',
+      guidePhone: '+91 94350 88334',
+      createdAt: new Date().toISOString(),
+      ...bookingDetails
+    };
+
+    setTourBookings((prev) => [newTourBooking, ...prev]);
+    return newTourBooking;
+  };
+
+  const createFestivalBooking = (bookingDetails) => {
+    const newId = `DH-FEST-${Math.floor(1000 + Math.random() * 9000)}`;
+    const newFestBooking = {
+      id: newId,
+      bookingDate: 'Just now',
+      status: 'Confirmed',
+      paymentStatus: 'Paid Online',
+      qrCode: `DH-PASS-${Math.floor(10000 + Math.random() * 90000)}`,
+      createdAt: new Date().toISOString(),
+      ...bookingDetails
+    };
+
+    setFestivalBookings((prev) => [newFestBooking, ...prev]);
+    return newFestBooking;
+  };
+
   return (
     <BookingContext.Provider
       value={{
@@ -115,8 +336,24 @@ export const BookingProvider = ({ children }) => {
         activeTransport,
         favorites,
         toggleFavorite,
+        favoriteHotels,
+        toggleFavoriteHotel,
         bookings,
         createBooking,
+        hotelBookings,
+        createHotelBooking,
+        cart,
+        cartRestaurant,
+        addToCart,
+        updateCartQuantity,
+        removeFromCart,
+        clearCart,
+        foodOrders,
+        createFoodOrder,
+        tourBookings,
+        createTourBooking,
+        festivalBookings,
+        createFestivalBooking,
         searchQuery,
         setSearchQuery,
         isNotificationsOpen,

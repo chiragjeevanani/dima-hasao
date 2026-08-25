@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBooking } from '../../context/BookingContext';
 
 export const QuickLinksGrid = () => {
   const [activeModal, setActiveModal] = useState(null);
   const { showToast } = useBooking();
+  const navigate = useNavigate();
 
   const links = [
     {
@@ -157,8 +159,15 @@ export const QuickLinksGrid = () => {
               ) : (
                 <button
                   onClick={() => {
-                    showToast(`Opening ${modalDetails[activeModal]?.title}`);
+                    const modalId = activeModal;
                     setActiveModal(null);
+                    if (modalId === 'food') {
+                      navigate('/food');
+                    } else if (modalId === 'packages') {
+                      navigate('/packages');
+                    } else {
+                      showToast(`Opening ${modalDetails[modalId]?.title}`);
+                    }
                   }}
                   className="w-full py-2.5 bg-[#0a3a22] hover:bg-emerald-800 text-white rounded-xl font-bold text-xs transition-colors shadow-md cursor-pointer"
                 >

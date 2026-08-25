@@ -1,16 +1,33 @@
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useBooking } from '../../context/BookingContext';
 import { NotificationsDrawer } from '../common/NotificationsDrawer';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export const MobileFrame = ({ children }) => {
   const { toastMessage } = useBooking();
+  const location = useLocation();
+  const scrollViewportRef = useRef(null);
+
+  // Automatically scroll to the top on any route navigation
+  useEffect(() => {
+    if (scrollViewportRef.current) {
+      scrollViewportRef.current.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      scrollViewportRef.current.scrollTop = 0;
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname, location.search]);
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden overscroll-none flex justify-center bg-[#fdfbf7] select-none touch-manipulation">
       {/* Main Responsive Mobile View Container */}
       <div className="w-full max-w-[430px] h-full flex flex-col relative bg-[#fdfbf7] overflow-hidden overscroll-none shadow-sm">
         {/* Scrollable Viewport with overscroll bounce disabled */}
-        <div className="flex-1 w-full overflow-y-auto overscroll-none hide-scrollbar flex flex-col relative bg-[#fdfbf7]">
+        <div
+          ref={scrollViewportRef}
+          data-scroll-container="true"
+          className="flex-1 w-full overflow-y-auto overscroll-none hide-scrollbar flex flex-col relative bg-[#fdfbf7]"
+        >
           {children}
         </div>
 

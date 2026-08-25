@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useBooking } from '../../context/BookingContext';
+import { motion } from 'framer-motion';
 
 export const Header = ({
   title = 'TOURIST PLACES',
@@ -15,64 +16,72 @@ export const Header = ({
   const isFav = placeId ? favorites.includes(placeId) : false;
 
   return (
-    <header className={`bg-[#0a3a2a] text-white px-4 py-3 sticky top-0 z-40 shadow-md ${className}`}>
+    <header className={`bg-[#062c16] text-white px-3.5 py-3 sticky top-0 z-40 shadow-md backdrop-blur-md border-b border-emerald-900/50 ${className}`}>
       <div className="flex items-center justify-between gap-2">
         {/* Left: Back Button */}
         {showBack ? (
-          <button
+          <motion.button
+            whileTap={{ scale: 0.88 }}
             onClick={() => navigate(-1)}
             aria-label="Go Back"
-            className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center text-white text-base cursor-pointer"
+            className="p-1 -ml-1 text-white hover:text-amber-300 transition-colors flex items-center justify-center text-base cursor-pointer shrink-0"
           >
-            <i className="fa-solid fa-arrow-left"></i>
-          </button>
+            <i className="fa-solid fa-arrow-left text-base"></i>
+          </motion.button>
         ) : (
-          <div className="w-9"></div>
+          <div className="w-6"></div>
         )}
 
         {/* Center: Title & Subtitle */}
         <div className="text-center flex-1 px-2">
-          <h1 className="text-base sm:text-lg font-bold tracking-widest flex items-center justify-center gap-2 uppercase">
-            <span className="text-amber-400 text-xs">
+          <h1 className="text-sm sm:text-base font-extrabold tracking-widest flex items-center justify-center gap-1.5 uppercase font-cinzel text-amber-300">
+            <span className="text-amber-400 text-[10px]">
               <i className="fa-solid fa-leaf"></i>
             </span>
             <span className="truncate">{title}</span>
-            <span className="text-amber-400 text-xs">
+            <span className="text-amber-400 text-[10px]">
               <i className="fa-solid fa-leaf"></i>
             </span>
           </h1>
           {subtitle && (
-            <p className="text-[11px] italic font-playfair text-amber-100/90 mt-0.5 truncate">
+            <p className="text-[10px] sm:text-[11px] italic font-playfair text-amber-100/90 mt-0.5 truncate">
               {subtitle}
             </p>
           )}
         </div>
 
         {/* Right Action */}
-        <div className="w-9 flex justify-end">
+        <div className="w-6 flex justify-end">
           {rightAction === 'search' && (
-            <button
+            <motion.button
+              whileTap={{ scale: 0.88 }}
               onClick={onSearchClick || (() => navigate('/places'))}
               aria-label="Search"
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center text-white text-base cursor-pointer"
+              className="p-1 -mr-1 text-white hover:text-amber-300 transition-colors flex items-center justify-center text-base cursor-pointer shrink-0"
             >
               <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
+            </motion.button>
           )}
 
           {rightAction === 'favorite' && placeId && (
-            <button
+            <motion.button
+              whileTap={{ scale: 0.85 }}
               onClick={() => toggleFavorite(placeId)}
               aria-label="Toggle Favorite"
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center text-white text-base cursor-pointer"
+              className="p-1 -mr-1 text-white hover:text-amber-300 transition-colors flex items-center justify-center text-base cursor-pointer shrink-0"
             >
-              <i className={`fa-heart text-base ${isFav ? 'fa-solid text-red-500 scale-110' : 'fa-regular text-white'}`}></i>
-            </button>
+              <motion.i
+                animate={{ scale: isFav ? [1, 1.3, 1] : 1 }}
+                transition={{ duration: 0.3 }}
+                className={`fa-heart text-base ${isFav ? 'fa-solid text-red-500' : 'fa-regular text-white'}`}
+              />
+            </motion.button>
           )}
 
-          {rightAction === 'none' && <div className="w-9"></div>}
+          {rightAction === 'none' && <div className="w-6"></div>}
         </div>
       </div>
     </header>
   );
 };
+

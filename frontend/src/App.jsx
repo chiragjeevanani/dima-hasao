@@ -4,6 +4,7 @@ import { BookingProvider } from './modules/user/context/BookingContext';
 import { MobileFrame } from './modules/user/components/layout/MobileFrame';
 import { UserRoutes } from './modules/user/routes/userRoutes';
 import { SplashScreen } from './modules/user/components/common/SplashScreen';
+import { ScrollToTop } from './modules/user/components/common/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <BookingProvider>
         {/* Animated Splash Screen Overlay */}
         <AnimatePresence mode="wait">

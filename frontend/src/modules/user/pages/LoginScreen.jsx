@@ -1,224 +1,425 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const LoginScreen = () => {
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('+91 98765 43210');
+  const [fullName, setFullName] = useState('');
+  const [password, setPassword] = useState('dima2026');
+  const [otp, setOtp] = useState('');
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [authMode, setAuthMode] = useState('otp'); // 'otp', 'password'
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { login, showToast } = useBooking();
   const navigate = useNavigate();
 
+  const handleSendOtp = (e) => {
+    e.preventDefault();
+    if (!phone) {
+      showToast('Please enter your phone number');
+      return;
+    }
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsOtpSent(true);
+      setOtp('7412');
+      showToast('OTP sent! Demo OTP: 7412 📱');
+    }, 600);
+  };
+
+  const handleVerifyOtp = (e) => {
+    e.preventDefault();
+    if (!otp || otp.length < 4) {
+      showToast('Please enter the 4-digit OTP');
+      return;
+    }
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      login(phone || '+91 98765 43210');
+      showToast(isSignUp ? '✨ Account created! Welcome to Dima Hasao!' : '✨ Welcome back!');
+      navigate('/');
+    }, 500);
+  };
+
   const handleLogin = (e) => {
-    e?.preventDefault();
-    login(phone || '+91 98765 43210');
-    navigate('/');
+    e.preventDefault();
+    if (authMode === 'otp') {
+      if (!isOtpSent) {
+        handleSendOtp(e);
+      } else {
+        handleVerifyOtp(e);
+      }
+      return;
+    }
+
+    setIsLoading(true);
+    setTimeout(() => {
+      login(phone || '+91 98765 43210');
+      showToast(isSignUp ? '✨ Account created! Welcome to Dima Hasao!' : '✨ Welcome back!');
+      setIsLoading(false);
+      navigate('/');
+    }, 600);
   };
 
   const handleSocialLogin = (provider) => {
-    showToast(`Logging in with ${provider}...`);
+    showToast(`Connecting to ${provider}...`);
     setTimeout(() => {
       login('+91 98765 43210');
       navigate('/');
-    }, 800);
+    }, 700);
   };
 
   const handleForgotPassword = () => {
-    showToast('🔑 Password reset OTP sent to your registered phone number.');
+    showToast('🔑 Password reset OTP sent to your registered number.');
+  };
+
+  const handleGuestLogin = () => {
+    login('Guest Explorer');
+    showToast('🌿 Exploring Dima Hasao as Guest');
+    navigate('/');
   };
 
   return (
-    <main
-      className="relative w-full h-dvh min-h-dvh max-h-dvh mx-auto overflow-hidden bg-cover bg-center bg-no-repeat shadow-sm flex flex-col justify-between p-3"
-      style={{
-        backgroundImage:
-          "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXaCppCAWOTw7SSjshaeIT4q9Vk0sB5Tr17OoPDuE5bf0M4Z6M3i_0R44YXYi1zVklA0SUNaOaO42Eh0hqM_PEI_T_amXdisJpNfS1A-TivdXkWbTBux83Fk9AVABTFh1VBJGpWMtMQTuQBA_6meYQYFBLjTLtw2gaMNfUVrEQLsFJY42tJ1O-N7vVOLbCcHjo5YJftD2kg_GRjfROfbeTe19eGQsss-baNDmi_I1W-lpjDNFIKeseDlQr2vZ9wVP0EQ')"
-      }}
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="relative w-full h-dvh min-h-dvh max-h-dvh mx-auto overflow-hidden shadow-2xl flex flex-col justify-between select-none p-2.5 sm:p-3 bg-[#04190c]"
     >
-      {/* Top section overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/60 pointer-events-none" />
+      {/* 100% Full-bleed Continuous Background with /updated.png */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <img
+          src="/updated.png"
+          alt="Dima Hasao Heritage Gate"
+          className="w-full h-full object-cover object-top"
+        />
 
-      {/* Header section */}
-      <div className="pt-4 text-center px-2 relative z-10">
-        <div className="inline-block bg-[#0a2e12]/80 backdrop-blur-md px-3.5 py-1 rounded-full border border-amber-400/40 mb-1 shadow-md">
-          <span className="text-[11px] font-bold text-amber-300 tracking-widest flex items-center gap-1.5">
-            <i className="fa-solid fa-leaf text-[9px]"></i>
-            JHUTHAI DIMA HASAO
-            <i className="fa-solid fa-leaf text-[9px]"></i>
-          </span>
-        </div>
+        {/* Top Sky Overlay for Typography Crispness */}
+        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-white/20 via-white/5 to-transparent z-10" />
+
+        {/* Soft Ambient Vignette behind bottom login card */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/50 via-black/15 to-transparent z-10" />
       </div>
 
-      {/* Login Card Container */}
-      <div className="relative z-10 mb-1">
+      {/* Top Header: Official Seal & Typography (Matching Reference) */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="pt-1 text-center relative z-20 flex flex-col items-center px-2"
+      >
+        {/* Official Tourism Seal with Falcon */}
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          className="w-15 h-15 sm:w-16 sm:h-16 rounded-full shadow-[0_3px_12px_rgba(0,0,0,0.3)] border-2 border-amber-400 overflow-hidden bg-white shrink-0 mb-0.5"
+        >
+          <img
+            alt="Dima Hasao Tourism Seal"
+            className="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpKxrrAMcqCtg37mOIMy8mnnPSo8mnfzA-MY5AedXF8YNQhVosR5R3-lX84Q6dcift5Cjgeb80xCIQAfBZdr2Z0TUrt63N04m_YREpwR6nNEvhau2t5w_m1TWqzMV2vv9rfXYXRLE3E0U6C2850nQo_Uf5zlnUiwI0Z_XpUW3GMVUUIksTboYKNEitTtDa_CBLJk2Kqdp3wjkeHiFjWQ5C5pMKE_7EFyBLWxOjGpWFCS8oTzC3YaFO"
+          />
+        </motion.div>
+
+        {/* JHUTHAI Header */}
+        <h1 className="font-playfair font-black text-2xl sm:text-[28px] tracking-wider text-[#062c14] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)] leading-none mt-0.5">
+          JHUTHAI
+        </h1>
+
+        {/* —• WELCOME TO •— */}
+        <div className="flex items-center justify-center gap-1.5 my-0.5">
+          <div className="h-[1.5px] bg-[#062c14] w-6"></div>
+          <span className="text-[8.5px] sm:text-[9px] font-black tracking-[0.25em] text-[#062c14] uppercase">
+            • WELCOME TO •
+          </span>
+          <div className="h-[1.5px] bg-[#062c14] w-6"></div>
+        </div>
+
+        {/* DIMA HASAO */}
+        <h2 className="font-montserrat font-black text-lg sm:text-xl text-[#062c14] tracking-wide leading-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+          DIMA HASAO
+        </h2>
+      </motion.div>
+
+      {/* Heritage Gate Viewing Space */}
+      <div className="flex-1 min-h-[40px] pointer-events-none" />
+
+      {/* Bottom Login / Sign Up Card (Matching Reference Image) */}
+      <div className="relative z-20 w-full max-w-[390px] mx-auto pb-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="bg-[#0a2e12] border border-[#d4af37] rounded-3xl p-4 sm:p-5 shadow-[0_10px_35px_rgba(0,0,0,0.7)] relative overflow-hidden"
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-[#051f11]/96 backdrop-blur-md border-2 border-[#caa83e] rounded-[22px] p-3.5 sm:p-4 shadow-[0_15px_40px_rgba(0,0,0,0.85)] relative overflow-hidden"
         >
-          {/* Subtle leaf pattern background overlay */}
-          <div
-            className="absolute inset-0 opacity-10 pointer-events-none"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
-              backgroundSize: '20px 20px'
-            }}
-          />
-
-          {/* Card Title */}
-          <div className="flex items-center justify-center space-x-2.5 mb-3.5 relative z-10">
-            <i className="fa-solid fa-leaf text-[#d4af37] text-xs transform -scale-x-100"></i>
-            <h3 className="text-[#d4af37] font-semibold tracking-wider text-xs uppercase">
+          {/* Leaf flourishes & Card Title */}
+          <div className="flex items-center justify-center space-x-2 mb-2.5 relative z-10">
+            <i className="fa-solid fa-leaf text-[#caa83e] text-[11px] transform -scale-x-100"></i>
+            <h3 className="text-[#caa83e] font-extrabold tracking-wider text-[11px] uppercase font-cinzel">
               {isSignUp ? 'CREATE YOUR ACCOUNT' : 'LOGIN TO YOUR ACCOUNT'}
             </h3>
-            <i className="fa-solid fa-leaf text-[#d4af37] text-xs"></i>
+            <i className="fa-solid fa-leaf text-[#caa83e] text-[11px]"></i>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleLogin} className="space-y-2.5 relative z-10">
+          <form onSubmit={handleLogin} className="space-y-2 relative z-10">
+            <AnimatePresence mode="wait">
+              {isSignUp && (
+                <motion.div
+                  key="name-field"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative overflow-hidden"
+                >
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <i className="fa-solid fa-user text-[#caa83e] text-[11px]"></i>
+                    </div>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="Full Name"
+                      className="block w-full pl-8 pr-3 py-1.5 border border-[#caa83e]/50 rounded-xl bg-[#02130a] text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#caa83e] text-xs transition-all"
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Phone Number Input */}
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i className="fa-solid fa-phone text-[#d4af37] text-xs"></i>
+                <i className="fa-solid fa-phone text-[#caa83e] text-[11px]"></i>
               </div>
               <input
                 id="phone"
                 name="phone"
                 type="tel"
+                disabled={isOtpSent}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="Phone Number (e.g. 98765 43210)"
-                className="block w-full pl-9 pr-3 py-2 border border-[#d4af37]/50 rounded-xl bg-[#061c0a] text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#d4af37] text-xs transition-colors"
+                placeholder="Phone Number"
+                className="block w-full pl-8 pr-3 py-1.5 border border-[#caa83e]/50 rounded-xl bg-[#02130a] text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#caa83e] text-xs transition-all disabled:opacity-75"
               />
+              {isOtpSent && (
+                <button
+                  type="button"
+                  onClick={() => setIsOtpSent(false)}
+                  className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#caa83e] text-[10px] hover:underline cursor-pointer"
+                >
+                  Edit
+                </button>
+              )}
             </div>
 
-            {/* Password Input */}
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <i className="fa-solid fa-lock text-[#d4af37] text-xs"></i>
+            {/* OTP Input (Shown when OTP sent in OTP mode) */}
+            {authMode === 'otp' && isOtpSent && (
+              <motion.div
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-1"
+              >
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i className="fa-solid fa-shield-halved text-[#caa83e] text-[11px]"></i>
+                  </div>
+                  <input
+                    id="otp"
+                    name="otp"
+                    type="text"
+                    maxLength={4}
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    placeholder="Enter 4-Digit OTP"
+                    className="block w-full pl-8 pr-3 py-1.5 border border-[#caa83e] rounded-xl bg-[#02130a] text-amber-300 font-mono font-bold tracking-widest text-center focus:outline-none focus:ring-1 focus:ring-[#caa83e] text-sm transition-all"
+                  />
+                </div>
+                <div className="flex justify-between items-center text-[10px] px-1">
+                  <span className="text-amber-200/80">Demo Code: 7412</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOtp('7412');
+                      showToast('OTP resent: 7412');
+                    }}
+                    className="text-[#caa83e] hover:underline cursor-pointer font-semibold"
+                  >
+                    Resend OTP
+                  </button>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Password Input (Shown in password mode) */}
+            {authMode === 'password' && (
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i className="fa-solid fa-lock text-[#caa83e] text-[11px]"></i>
+                </div>
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                  className="block w-full pl-8 pr-8 py-1.5 border border-[#caa83e]/50 rounded-xl bg-[#02130a] text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#caa83e] text-xs transition-all"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-gray-400 hover:text-[#caa83e] transition-colors cursor-pointer"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <i className={`fa-regular ${showPassword ? 'fa-eye-slash' : 'fa-eye'} text-xs`}></i>
+                </button>
               </div>
-              <input
-                id="password"
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-                className="block w-full pl-9 pr-9 py-2 border border-[#d4af37]/50 rounded-xl bg-[#061c0a] text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#d4af37] text-xs transition-colors"
-              />
+            )}
+
+            {/* Mode Switcher */}
+            <div className="flex justify-between items-center text-[10.5px]">
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-300 cursor-pointer"
+                onClick={() => {
+                  setAuthMode((prev) => (prev === 'otp' ? 'password' : 'otp'));
+                  setIsOtpSent(false);
+                }}
+                className="text-[#caa83e] font-medium hover:text-amber-200 transition-colors cursor-pointer"
               >
-                <i className={`fa-regular ${showPassword ? 'fa-eye-slash' : 'fa-eye'} text-xs`}></i>
+                {authMode === 'otp' ? 'Login with Password' : 'Login with OTP'}
               </button>
+
+              {authMode === 'password' && !isSignUp && (
+                <button
+                  type="button"
+                  onClick={handleForgotPassword}
+                  className="text-[#caa83e] font-medium hover:text-amber-200 transition-colors cursor-pointer"
+                >
+                  Forgot?
+                </button>
+              )}
             </div>
 
-            {/* Forgot Password Link */}
-            <div className="flex justify-end pt-0.5">
-              <button
-                type="button"
-                onClick={handleForgotPassword}
-                className="text-[#d4af37] text-[11px] font-medium hover:text-[#e8c558] transition-colors cursor-pointer"
-              >
-                Forgot Password?
-              </button>
-            </div>
-
-            {/* Login Button */}
+            {/* LOGIN / GET OTP Button */}
             <motion.button
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, filter: 'brightness(1.06)' }}
               whileTap={{ scale: 0.97 }}
               type="submit"
-              className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-xl shadow-lg text-xs font-bold text-black bg-gradient-to-r from-[#b38f2a] via-[#e8c558] to-[#b38f2a] hover:from-[#e8c558] hover:to-[#d4af37] transition-all duration-300 cursor-pointer"
+              disabled={isLoading}
+              className="w-full flex items-center justify-center py-2 px-4 rounded-xl shadow-md text-xs font-black text-black bg-[#e5b33b] hover:bg-[#efc04c] transition-all cursor-pointer uppercase tracking-wider"
             >
-              {isSignUp ? 'SIGN UP & EXPLORE' : 'LOGIN'}
+              {isLoading ? (
+                <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <span>
+                  {authMode === 'otp'
+                    ? !isOtpSent
+                      ? 'GET OTP'
+                      : 'VERIFY & EXPLORE'
+                    : isSignUp
+                    ? 'SIGN UP & EXPLORE'
+                    : 'LOGIN'}
+                </span>
+              )}
             </motion.button>
           </form>
 
-          {/* Social Login & Footer */}
-          <div className="mt-3 relative z-10">
-            {/* Divider */}
+          {/* Social Divider */}
+          <div className="mt-2.5 relative z-10">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-[#d4af37]/30"></div>
+                <div className="w-full border-t border-[#caa83e]/40"></div>
               </div>
               <div className="relative flex justify-center text-xs">
-                <span className="px-2.5 bg-[#0a2e12] text-[#d4af37] font-medium tracking-wide flex items-center space-x-1 text-[9.5px]">
-                  <span className="w-1 h-1 rounded-full bg-[#d4af37]"></span>
+                <span className="px-2 bg-[#051f11] text-[#caa83e] font-semibold tracking-wide flex items-center space-x-1 text-[8.5px] uppercase">
+                  <span className="w-1 h-1 rounded-full bg-[#caa83e]"></span>
                   <span>OR CONTINUE WITH</span>
-                  <span className="w-1 h-1 rounded-full bg-[#d4af37]"></span>
+                  <span className="w-1 h-1 rounded-full bg-[#caa83e]"></span>
                 </span>
               </div>
             </div>
 
             {/* Social Buttons */}
-            <div className="mt-2.5 flex justify-center space-x-3">
+            <div className="mt-2 flex justify-center space-x-3">
               {/* Google */}
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.92 }}
                 onClick={() => handleSocialLogin('Google')}
                 type="button"
-                className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 transition-colors cursor-pointer"
+                className="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer border border-gray-200 p-1"
+                aria-label="Login with Google"
               >
                 <img
                   alt="Google"
-                  className="w-4 h-4"
+                  className="w-full h-full object-contain"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLeqN13rlXv-44xRAQ-nGDsa9Tzl8-nZnA4mOmR6S_UXReRXl3VJPkszskBAfqg_VTL7msfRCXQX9LF1AuM6fvYQ9soNvATpm6Lv-40gMq4HLAey6hv0NHTdgHq6FWkTC0V7uEu03rWOHbcg0QdUyF5iF05n6dLDmYN25g8ZoFotl1lxprPrQqmCs1i_h5DlhvxV4tBZdS0k8VOgcXX6dTvH1U5CxjOyBtHjKUhLKOnV4RX9d0Clc"
                 />
               </motion.button>
+
               {/* Facebook */}
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.92 }}
                 onClick={() => handleSocialLogin('Facebook')}
                 type="button"
-                className="w-8 h-8 bg-[#1877F2] rounded-full flex items-center justify-center shadow-md hover:bg-[#166fe5] transition-colors cursor-pointer"
+                className="w-7 h-7 bg-[#1877F2] rounded-full flex items-center justify-center shadow-md cursor-pointer text-white"
+                aria-label="Login with Facebook"
               >
-                <i className="fa-brands fa-facebook-f text-white text-xs"></i>
+                <i className="fa-brands fa-facebook-f text-xs"></i>
               </motion.button>
+
               {/* Apple */}
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.92 }}
                 onClick={() => handleSocialLogin('Apple')}
                 type="button"
-                className="w-8 h-8 bg-black rounded-full flex items-center justify-center shadow-md hover:bg-gray-900 transition-colors cursor-pointer"
+                className="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer border border-gray-200 text-black"
+                aria-label="Login with Apple"
               >
-                <i className="fa-brands fa-apple text-white text-xs pb-0.5"></i>
+                <i className="fa-brands fa-apple text-xs pb-0.5"></i>
               </motion.button>
             </div>
 
-            {/* Toggle Sign Up / In */}
-            <div className="mt-2.5 text-center text-[11px] text-gray-300">
+            {/* Toggle Sign Up / Login */}
+            <div className="mt-2 text-center text-[10.5px] text-gray-200">
               {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
               <button
                 type="button"
                 onClick={() => setIsSignUp(!isSignUp)}
-                className="font-semibold text-[#d4af37] hover:text-[#e8c558] underline transition-colors cursor-pointer"
+                className="font-bold text-[#caa83e] hover:text-amber-200 underline transition-colors cursor-pointer ml-0.5"
               >
                 {isSignUp ? 'Login' : 'Sign Up'}
               </button>
             </div>
 
             {/* Quick Guest Bypass */}
-            <div className="mt-1.5 text-center">
-              <button
+            <div className="mt-0.5 text-center">
+              <motion.button
+                whileHover={{ x: 2 }}
+                whileTap={{ scale: 0.96 }}
                 type="button"
-                onClick={() => {
-                  login('Guest');
-                  navigate('/');
-                }}
-                className="text-[10.5px] text-emerald-300 hover:text-white transition-colors cursor-pointer font-medium"
+                onClick={handleGuestLogin}
+                className="text-[10px] text-emerald-300 hover:text-white transition-colors cursor-pointer font-semibold inline-flex items-center gap-1"
               >
-                Continue as Guest Explorer →
-              </button>
+                <span>Continue as Guest Explorer →</span>
+              </motion.button>
             </div>
           </div>
         </motion.div>
       </div>
-    </main>
+    </motion.main>
   );
 };
+
+
