@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 import { SearchBar } from '../components/common/SearchBar';
@@ -5,11 +6,34 @@ import { CategoryCard } from '../components/home/CategoryCard';
 import { QuickLinksGrid } from '../components/home/QuickLinksGrid';
 import { PromoBanner } from '../components/home/PromoBanner';
 import { WhyVisitGrid } from '../components/home/WhyVisitGrid';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    image: '/carousal-2.png',
+    position: 'object-[center_35%]',
+    alt: 'Dima Hasao Landmark Gate'
+  },
+  {
+    id: 2,
+    image: '/carousal-3.png',
+    position: 'object-[center_35%]',
+    alt: 'I Love Dima Hasao Mountain Viewpoint'
+  }
+];
 
 export const HomeScreen = () => {
   const navigate = useNavigate();
   const { setIsNotificationsOpen } = useBooking();
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <motion.div
@@ -23,18 +47,38 @@ export const HomeScreen = () => {
         className="relative w-full h-[340px] sm:h-[360px] overflow-hidden rounded-b-3xl shadow-md"
         data-purpose="main-header"
       >
-        {/* Landscape Panorama Image */}
+        {/* Landscape Carousel Images */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <motion.img
-            initial={{ scale: 1.05 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
-            alt="Dima Hasao Scenic Landscape"
-            className="w-full h-full object-cover object-center"
-            src="/images/dima_hasao_hero_landscape.jpg"
-          />
-          {/* Multi-stop gradient to preserve contrast and vibrancy */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-white/10 to-black/40 pointer-events-none" />
+          <AnimatePresence initial={false} mode="wait">
+            <motion.img
+              key={HERO_SLIDES[currentHeroIndex].id}
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.8, ease: 'easeInOut' }}
+              alt={HERO_SLIDES[currentHeroIndex].alt}
+              className={`w-full h-full object-cover ${HERO_SLIDES[currentHeroIndex].position} absolute inset-0`}
+              src={HERO_SLIDES[currentHeroIndex].image}
+            />
+          </AnimatePresence>
+          {/* Subtle top/bottom contrast gradient without obstructing the image */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/30 pointer-events-none z-1" />
+
+          {/* Carousel Indicator Dots */}
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center items-center gap-1.5 z-20 pointer-events-auto">
+            {HERO_SLIDES.map((slide, index) => (
+              <button
+                key={slide.id}
+                onClick={() => setCurrentHeroIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  index === currentHeroIndex
+                    ? 'w-6 bg-amber-400 shadow-sm'
+                    : 'w-1.5 bg-white/60 hover:bg-white'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Top Bar Navigation Icons */}
@@ -61,34 +105,33 @@ export const HomeScreen = () => {
           </motion.button>
         </div>
 
-        {/* Main Header Typography & Seal Layout */}
-        <div className="absolute top-7 left-3.5 right-3.5 z-10 flex items-center justify-center gap-3.5">
-          {/* Official Round Seal Logo with Golden Glow */}
+        {/* Main Header Typography & Logo Layout */}
+        <div className="absolute top-4 sm:top-5 left-3.5 right-3.5 z-10 flex items-center justify-center gap-3">
+          {/* Transparent Circular Tourism Emblem */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-            className="w-[88px] h-[88px] sm:w-[96px] sm:h-[96px] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.4)] border-2 border-amber-400 overflow-hidden bg-white shrink-0 relative group cursor-pointer"
+            className="w-[100px] h-[100px] sm:w-[110px] sm:h-[110px] shrink-0 drop-shadow-[0_4px_16px_rgba(0,0,0,0.55)] cursor-pointer"
             onClick={() => navigate('/places')}
           >
             <img
-              alt="Dima Hasao Tourism Seal"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpKxrrAMcqCtg37mOIMy8mnnPSo8mnfzA-MY5AedXF8YNQhVosR5R3-lX84Q6dcift5Cjgeb80xCIQAfBZdr2Z0TUrt63N04m_YREpwR6nNEvhau2t5w_m1TWqzMV2vv9rfXYXRLE3E0U6C2850nQo_Uf5zlnUiwI0Z_XpUW3GMVUUIksTboYKNEitTtDa_CBLJk2Kqdp3wjkeHiFjWQ5C5pMKE_7EFyBLWxOjGpWFCS8oTzC3YaFO"
+              alt="Dima Hasao Tourism Logo"
+              className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+              src="/logo.png"
             />
           </motion.div>
 
           {/* Festive Typography Banner */}
           <motion.div
-            initial={{ opacity: 0, x: 15 }}
+            initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.15, duration: 0.5 }}
-            className="flex flex-col text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+            className="flex flex-col text-left drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
           >
-            {/* JHUTHAI! */}
-            <div className="flex items-center font-black text-2xl sm:text-[28px] tracking-wide leading-none select-none">
+            {/* JUTHAI! */}
+            <div className="flex items-center font-black text-2xl sm:text-[26px] tracking-wide leading-none select-none">
               <span className="text-[#ff4d4d]">J</span>
-              <span className="text-[#ff8533]">H</span>
               <span className="text-[#ffcc00]">U</span>
               <span className="text-[#33cc66]">T</span>
               <span className="text-[#3399ff]">H</span>
@@ -107,12 +150,12 @@ export const HomeScreen = () => {
             </div>
 
             {/* DIMA HASAO */}
-            <h1 className="font-montserrat text-2xl sm:text-[26px] font-black text-white leading-none tracking-tight">
+            <h1 className="font-montserrat text-2xl sm:text-[25px] font-black text-white leading-none tracking-tight">
               DIMA HASAO
             </h1>
 
             {/* Subtitle */}
-            <p className="text-amber-100 font-serif font-semibold italic text-xs mt-0.5">
+            <p className="text-amber-100 font-serif font-semibold italic text-[11px] sm:text-xs mt-0.5">
               Explore • Experience • Discover
             </p>
           </motion.div>

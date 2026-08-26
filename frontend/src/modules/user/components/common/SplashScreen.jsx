@@ -90,17 +90,17 @@ export const SplashScreen = ({ onFinish }) => {
               damping: 20,
               duration: 0.8
             }}
-            className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-white p-1 border-4 border-[#d4af37] shadow-[0_0_40px_rgba(212,175,55,0.4)] overflow-hidden relative z-10"
+            className="w-32 h-32 sm:w-36 sm:h-36 drop-shadow-[0_0_35px_rgba(212,175,55,0.4)] relative z-10 flex items-center justify-center"
           >
             <img
               alt="Dima Hasao Tourism Emblem"
-              className="w-full h-full object-cover rounded-full"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpKxrrAMcqCtg37mOIMy8mnnPSo8mnfzA-MY5AedXF8YNQhVosR5R3-lX84Q6dcift5Cjgeb80xCIQAfBZdr2Z0TUrt63N04m_YREpwR6nNEvhau2t5w_m1TWqzMV2vv9rfXYXRLE3E0U6C2850nQo_Uf5zlnUiwI0Z_XpUW3GMVUUIksTboYKNEitTtDa_CBLJk2Kqdp3wjkeHiFjWQ5C5pMKE_7EFyBLWxOjGpWFCS8oTzC3YaFO"
+              className="w-full h-full object-contain"
+              src="/logo.png"
             />
           </motion.div>
         </div>
 
-        {/* Festive JHUTHAI Greeting */}
+        {/* Festive JUTHAI Greeting */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,6 @@ export const SplashScreen = ({ onFinish }) => {
           className="flex items-center justify-center font-black text-3xl sm:text-4xl tracking-widest leading-none mb-1 drop-shadow-md"
         >
           <span className="text-[#ff4d4d]">J</span>
-          <span className="text-[#ff8533]">H</span>
           <span className="text-[#ffcc00]">U</span>
           <span className="text-[#33cc66]">T</span>
           <span className="text-[#3399ff]">H</span>
