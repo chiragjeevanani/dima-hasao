@@ -116,18 +116,18 @@ export const LoginScreen = () => {
         {/* Official Tourism Seal with Falcon */}
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="w-15 h-15 sm:w-16 sm:h-16 rounded-full shadow-[0_3px_12px_rgba(0,0,0,0.3)] border-2 border-amber-400 overflow-hidden bg-white shrink-0 mb-0.5"
+          className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 drop-shadow-[0_4px_16px_rgba(0,0,0,0.4)] mb-1"
         >
           <img
-            alt="Dima Hasao Tourism Seal"
-            className="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpKxrrAMcqCtg37mOIMy8mnnPSo8mnfzA-MY5AedXF8YNQhVosR5R3-lX84Q6dcift5Cjgeb80xCIQAfBZdr2Z0TUrt63N04m_YREpwR6nNEvhau2t5w_m1TWqzMV2vv9rfXYXRLE3E0U6C2850nQo_Uf5zlnUiwI0Z_XpUW3GMVUUIksTboYKNEitTtDa_CBLJk2Kqdp3wjkeHiFjWQ5C5pMKE_7EFyBLWxOjGpWFCS8oTzC3YaFO"
+            alt="Dima Hasao Tourism Logo"
+            className="w-full h-full object-contain"
+            src="/logo.png"
           />
         </motion.div>
 
-        {/* JHUTHAI Header */}
+        {/* JUTHAI Header */}
         <h1 className="font-playfair font-black text-2xl sm:text-[28px] tracking-wider text-[#062c14] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)] leading-none mt-0.5">
-          JHUTHAI
+          JUTHAI
         </h1>
 
         {/* —• WELCOME TO •— */}

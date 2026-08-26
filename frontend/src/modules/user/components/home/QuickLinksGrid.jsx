@@ -90,7 +90,17 @@ export const QuickLinksGrid = () => {
             <motion.button
               key={item.id}
               whileTap={{ scale: 0.92 }}
-              onClick={() => setActiveModal(item.id)}
+              onClick={() => {
+                if (item.id === 'events') {
+                  navigate('/festivals');
+                } else if (item.id === 'packages') {
+                  navigate('/packages');
+                } else if (item.id === 'food') {
+                  navigate('/food');
+                } else {
+                  setActiveModal(item.id);
+                }
+              }}
               className={`flex flex-col items-center justify-center p-0.5 hover:bg-gray-50/80 rounded-xl transition-colors cursor-pointer ${
                 index > 0 ? 'border-l border-gray-100 pl-1' : ''
               }`}
@@ -161,7 +171,9 @@ export const QuickLinksGrid = () => {
                   onClick={() => {
                     const modalId = activeModal;
                     setActiveModal(null);
-                    if (modalId === 'food') {
+                    if (modalId === 'events') {
+                      navigate('/festivals');
+                    } else if (modalId === 'food') {
                       navigate('/food');
                     } else if (modalId === 'packages') {
                       navigate('/packages');
